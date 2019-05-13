@@ -1,16 +1,16 @@
-#Secure Software Development Lifecycle SSDLC
+# Secure Software Development Lifecycle SSDLC
 
-Software Development Lifecycle (SDLC)
-![Software Development Lifecycle Diagram](./images/sdlc process graphic.png "SDLC Diagram")
-Secure Software Development Lifecycle (SSDLC)
-![Software Development Lifecycle Diagram](./images/ssdlc process graphic.png "SSDLC Diagram")
+### Software Development Lifecycle (SDLC)
+![Software Development Lifecycle Diagram](images/sdlc%20process%20graphic.png "SDLC Diagram")
+### Secure Software Development Lifecycle (SSDLC)
+![Software Development Lifecycle Diagram](images/ssdlc%20process%20graphic.png "SSDLC Diagram")
 
 | Requirments Phase Offerings | Design Phase Offerings | Develop Phase Offerings | Test Phase Offerings| Deploy Phase Offerings |
 | :--- | :--- | :--- | :--- | :--- |
-| Security Requirements | Design Review & Threat Models |  -Static Analysis Tools<br>-Secure Coding | - Ask in Slack <br>- Security Testing | - Pentest in Product<br>- Incident Response Support |
+| Security Requirements | Design Review & Threat Models |  - Static Analysis Tools<br> - Secure Coding | - Ask in Slack <br>- Security Testing | - Pentest in Product<br>- Incident Response Support |
 
 
-###Unity SSDLC Overview
+### Unity SSDLC Overview
 
 The goal of Unity's SSDLC provide product teams guidance on how to include software security practices into their existing development process. The phases above may not be formally implemented or recognized by your team, but they do generally represent how all software is developed, implicitly or explicitly. Following this model, you are able to best determine what services the Unity Security team provides based on what phase of the life-cycle you are currently in, with your product.
 
@@ -26,19 +26,19 @@ Our SSDLC is currently organized under the following topics:
 
 Also, be sure to keep an eye out for on-site trainings, which will be announced (and archived) here -> [Developer Security Trainings](unity.com)
 
-###Suggested SSDLC Topics and Articles
-#####Language Specific Guidance
+### Suggested SSDLC Topics and Articles
+##### Language Specific Guidance
 - [Golang](unity.com)
 - [Node.js](unity.com)
 - [Ruby](unity.com)
 - [C#](unity.com)
 
-#####Secure Coding Guidance
+##### Secure Coding Guidance
 - [API Best Practices](unity.com)
 - [Authentication/Authorization Best Practices](unity.com)
 - [Preventing Common Web Attacks](unity.com)
 
-#####Security Automation and Tooling
+##### Security Automation and Tooling
 
 - [AppCollector](unity.com) - Onboard your project/product with Security
 - [Vault](unity.com) - Secrets management service
