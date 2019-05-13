@@ -1,5 +1,5 @@
 # API Best Practices Guidelines [_Coding Practice_] 
-<font size="-1">_Author: Frank Arana (Dec. 2018)_</font>
+<font size="-1">_Author: Frank Arana - Dec. 2018_</font>
 
 ## Overview
 
@@ -11,7 +11,7 @@ This document covers general security guidelines for API endpoints within Unity.
 - [General security practices relevant to, but not specific to APIs](#general)
 
 ### Recommendations
-##### Access Controls
+#### Access Controls
 ###### Description
 
 API endpoints should follow the principle of least privilege. Services with protected information should serve to the smallest group possible.
@@ -40,6 +40,8 @@ Incorrect access controls can range from High to Low Severity.
 
 https://www.owasp.org/index.php/REST_Security_Cheat_Sheet
 
+---
+
 #### Input Validation
 ###### Description
 
@@ -66,7 +68,9 @@ Parsing - Third party parsers should be kept up to date, changes to internal par
 Input Validation issues could range from Low to High depending on what how the error can be leveraged.
 ###### References (Optional)
 *TBD - List external references for more detailed guidance*
-#### Request Integrity
+
+---
+### Request Integrity
 ###### Description
 
 It is possible that a request could be modified in-transit between the original requestor and the API endpoint.
@@ -75,7 +79,8 @@ It is possible that a request could be modified in-transit between the original 
 Modified requests may cause state changing actions to the original requestor’s data, or cause incorrect, modified, or unexpected data to be served.
 ###### Example of Issue (Optional)
 
-#### Replay Attacks
+---
+### Replay Attacks
 An attacker sends a previous, genuine request to cause an action to happen again at a later time.
 
 Modified requests in-transit: An attacker modifies data in the genuine request as it is sent.
@@ -88,6 +93,8 @@ Depending on what actions the request can take, severity could range from High t
 ###### References (Optional)
 
 https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html#why-requests-are-signed 
+
+---
 #### General
 ###### Description
 Common security practices relevant, but not exclusive to APIs
