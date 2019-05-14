@@ -56,7 +56,7 @@ Common examples of secret usage are:
 - Service account auth in backend
 - Private key encryption
 - Transport encryption (ex., HTTPS/TLS)
-![Secrets on Fire](./images/secrets%20fire.png)
+![Secrets on Fire](../images/secrets%20fire.png)
 
 
 As a rule of thumb, you should use temporary credentials at every opportunity. Not all systems are built in a way that supports this and so using a secrets management tool like Hashicorp Vault or AWS Secrets Manager is strongly recommended. Environment variables are passable but not recommended. You should never store secrets in code.
