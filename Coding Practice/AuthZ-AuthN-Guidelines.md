@@ -13,7 +13,7 @@ This document provides guidelines for how to implement authentication and author
 
 **Authentication** is the process of verifying the user’s identity typically through an initial login and subsequently by verifying a unique secret identifier on each HTTP request made by the user’s browser.
 
-**Authorization** is the process of ensuring a user can only access resources they are supposed to, usually based on some role or security level that is defined according to business logic.
+**Authorization** is the process of ensuring a user can only access resources they are supposed to, usually based on some role or Risk Rating that is defined according to business logic.
 ## Recommendations
 ### Use a Trusted Identity Provider
 ###### Description
@@ -27,7 +27,7 @@ Many services will require authentication as a requirement. No authentication al
 ###### How to Fix?
 
 Determine if your application is an internal or external application. If it is external, contact Genesis and Security to integrate your application with Unity ID. If it is internal, contact IT to integrate with Active Directory (and Okta in the future).
-###### Security Level
+###### Risk Rating
 
 High
 
@@ -42,7 +42,7 @@ By adding multiple layers of verification we can ensure that a user’s account 
 ###### How to Fix?
 
 Contact the appropriate identity provider to be used at Unity, and require 2FA if needed.
-###### Security Level
+###### Risk Rating
 
 Medium
 
@@ -57,7 +57,7 @@ Limiting the scope of our APIs is a best practice, that can limit the impact of 
 ###### How to Fix?
 
 During the requirements phase, determine what information is needed for the OAuth2 client, and limit the APIs to only what is necessary. If possible, work with Genesis to build a custom scope that will limit access to wider APIs. 
-###### Security Level
+###### Risk Rating
 
 Medium
 ###### References
@@ -75,7 +75,7 @@ This is primarily a defense-in-depth measure, focusing on the case if these toke
 ###### How to Fix?
 
 Check all tokens related to authentication, and review their lifetimes. If you are unsure, contact security for recommendations on their lifetimes. When possible, use the shortest lifetime within a reasonable use.
-###### Security Level
+###### Risk Rating
 
 Medium
 
@@ -108,7 +108,7 @@ _Bad Example_
         return False;
 
 
-###### Security Level
+###### Risk Rating
 
 High
 
@@ -123,7 +123,7 @@ This is to ensure that the OAuth2 flow is initiated by the user, and is not vuln
 ###### How to Fix?
 
 Generate a cryptographically-secure random state parameter when the OAuth2 flow is initialized. The client should validate this when it is returned through the redirect URI callback. The parameter should only be valid for the same OAuth2 flow that initiated it.
-###### Security Level
+###### Risk Rating
 
 Low
 ###### References

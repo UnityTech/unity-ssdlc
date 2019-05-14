@@ -1,5 +1,5 @@
 # Secure Software Development Lifecycle SSDLC
-<font size="-2">Unity Security 2019</font>
+<font size="-2">Unity AppSec Team 2019</font>
 
 ### Software Development Lifecycle (SDLC)
 ![Software Development Lifecycle Diagram](images/sdlc%20process%20graphic.png "SDLC Diagram")
@@ -35,8 +35,8 @@ Also, be sure to keep an eye out for on-site trainings, which will be announced 
 - [C#](unity.com)
 
 ##### Secure Coding Guidance
-- [API Best Practices](unity.com)
-- [Authentication/Authorization Best Practices](unity.com)
+- [API Best Practices](./Coding%20%Practice/API-Best-Practices.md)
+- [Authentication/Authorization Best Practices](./Coding%20%Practice/AuthZ-AuthN-Guidelines.md)
 - [Preventing Common Web Attacks](unity.com)
 
 ##### Security Automation and Tooling

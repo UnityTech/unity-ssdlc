@@ -33,7 +33,7 @@ For Internal (to Unity) APIs: Limit network access as much as possible. Ideally,
 For Public APIs with sensitive information: Require authentication before performing any action being requested. API keys should be both revocable and renewable.
 
 For Public APIs providing public information: Ensure no state changing actions are being performed through a public API without authentication. Consider rate limiting to prevent a single host making too many requests in a small amount of time.
-###### Security Level
+###### Risk Rating
 
 Incorrect access controls can range from High to Low Severity.
 ###### References (Optional)
@@ -63,7 +63,7 @@ Whitelist accepted content-types
 Restrict http methods
 
 Parsing - Third party parsers should be kept up to date, changes to internal parsers should be carefully reviewed.
-###### Security Level
+###### Risk Rating
 
 Input Validation issues could range from Low to High depending on what how the error can be leveraged.
 ###### References (Optional)
@@ -87,7 +87,7 @@ Modified requests in-transit: An attacker modifies data in the genuine request a
 ###### How to Fix?
 
 Generate signatures or HMACs for each request containing sensitive data or actions. Check the signature of the request to determine if it is genuine. Sign requests that include timestamps, and deny all requests that are relatively too old.
-###### Security Level
+###### Risk Rating
 
 Depending on what actions the request can take, severity could range from High to Low.
 ###### References (Optional)
@@ -113,7 +113,7 @@ Log and monitor API activity. Detecting anomalies can assist in finding maliciou
 Disable CORS if not needed, or scope it down as small as possible to prevent forged requests or data leakage.
 
 Return vague error responses. Put as little information as possible when returning an error to the user. Do not return any information about the server environment or debug information like stack traces.
-###### Security Level
+###### Risk Rating
 
 Ranging from Low to High depending on context.
 ###### References (Optional)
