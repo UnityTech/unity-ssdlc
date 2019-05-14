@@ -47,3 +47,18 @@ Also, be sure to keep an eye out for on-site trainings, which will be announced 
 - [SourceClear](unity.com) - Dependency version checking and static analysis 
   -  [SourceClear](unity.com) Remediation
 
+
+## List of Articles
+#### _Coding Practice_
+- [API Best Practices](./Code%20Practice/API-Best-Practices.md)
+- [Authorization & Authentication Guidelines](./Code%20Practice/AuthZ-AuthN-Guidelines.md)
+- [Cryptographic Guidelines](./Code%20Practice/Cryptographic-Guidelines.md)
+- [HTTP Header Security](./Code%20Practice/HTTP-Header-Security.md)
+- [Preventing Common Web Attacks](./Code%20Practice/Preventing-Common-Web-Attacks.md)
+- [Secrets Management](./Code%20Practice/Secrets-Management.md)
+- [Secure Design Principles](./Code%20Practice/Secure-Design-Principles.md)
+#### _Language Guidance_
+
+#### _Security Process_
+
+#### _Tools & Automation_
