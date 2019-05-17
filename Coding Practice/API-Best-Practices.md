@@ -1,4 +1,4 @@
-# API Best Practices Guidelines [_Coding Practice_] 
+# API Best Practices Guidelines [Coding Practice] 
 <font size="-1">_Author: Frank Arana - Dec. 2018_</font>
 
 ## Overview
