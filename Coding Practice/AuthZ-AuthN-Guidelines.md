@@ -62,7 +62,7 @@ During the requirements phase, determine what information is needed for the OAut
 Medium
 ###### References
 
-https://tools.ietf.org/html/rfc6819#section-3.1.1
+- https://tools.ietf.org/html/rfc6819#section-3.1.1
 
 --- 
 ### Limited Token Lifetimes
@@ -128,4 +128,4 @@ Generate a cryptographically-secure random state parameter when the OAuth2 flow 
 Low
 ###### References
 
-https://tools.ietf.org/html/rfc6819#section-3.6
+- https://tools.ietf.org/html/rfc6819#section-3.6

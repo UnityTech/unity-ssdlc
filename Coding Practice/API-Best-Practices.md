@@ -38,7 +38,7 @@ For Public APIs providing public information: Ensure no state changing actions a
 Incorrect access controls can range from High to Low Severity.
 ###### References (Optional)
 
-https://www.owasp.org/index.php/REST_Security_Cheat_Sheet
+- https://www.owasp.org/index.php/REST_Security_Cheat_Sheet
 
 ---
 
@@ -92,10 +92,10 @@ Generate signatures or HMACs for each request containing sensitive data or actio
 Depending on what actions the request can take, severity could range from High to Low.
 ###### References (Optional)
 
-https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html#why-requests-are-signed 
+- https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html#why-requests-are-signed
 
 ---
-#### General
+### General
 ###### Description
 Common security practices relevant, but not exclusive to APIs
 ###### Why We Care

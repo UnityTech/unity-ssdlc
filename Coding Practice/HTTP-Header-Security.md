@@ -3,9 +3,9 @@
 ## Overview
 This document describes the HTTP security headers that we strongly recommend are implemented on all of Unity’s Internet-facing services. https://observatory.mozilla.org can be used to check your site's current headers. The headers are listed in order of importance, but please not that a proper secure Content Security Policy can be difficult to implement unless the application is designed from the beginning with this in mind. 
 
-Therefore, try to get some quick wins with headers such as HTTP Strict Transport Security, X-Frame-Options, X-XSS-Protection and X-Content-Type-Options first.
+Therefore, try to get some quick wins with headers such as: `HTTP Strict Transport Security`, `X-Frame-Options`, `X-XSS-Protection` and `X-Content-Type-Options` first.
 
-For applications that only offer web APIs; check the recommendations under "API" at the bottom of the page.
+For applications that only offer web APIs; check the recommendations under [API](#api) at the bottom of the page.
 #### HTTP Strict Transport Security
 
 The strict transport security header tells browsers to load the website over encrypted connections only from now on. This helps avoid what is called SSL stripping attacks where an attacker who are in a Man-In-The-Middle position downgrades a user to an insecure connection.
@@ -21,7 +21,7 @@ Once confident that it's working you should aim for a max-age of minimum 6 month
 **Recommended final setting:**
     
     Strict-Transport-Security: max-age=63072000
-
+---
 #### Content-Security-Policy
 
 This header aims to reduce or even eliminate the impact of XSS attacks. It can be used to tell the browser where the website is supposed to load resources from.
@@ -62,6 +62,8 @@ Google has found that most CSP utilising whitelisting does not prevent XSS becau
  
 
 Note that you would need a reporting endpoint to receive the CSP violation reports at <mydomain>/csp-violation-report-endpoint for this last example to work properly. 
+
+---
 #### X-Frame-Options
 
 This header tells the browser if framing the website is allowed by other domains. By setting this header to a list of allowed domains or simply deny framing we can prevent Clickjacking attacks. Read more about clickjacking attacks here: https://www.owasp.org/index.php/Clickjacking
@@ -74,6 +76,7 @@ This header tells the browser if framing the website is allowed by other domains
 
 X-Frame-Options is being replaced by the Content-Security Policy header's "frame-ancestors" attribute. This attribute is more flexible and should be added as well. 
  
+ ---
 #### X-XSS-Protection
 
 X-XSS-Protection sets the configuration for the cross-site scripting filter built into most browsers. Read more about it here: https://scotthelme.co.uk/hardening-your-http-response-headers/#x-xss-protection
@@ -81,7 +84,7 @@ X-XSS-Protection sets the configuration for the cross-site scripting filter buil
 **Recommended setting:**
 
     X-XSS-Protection: 1; mode=block
-
+---
 #### X-Content-Type-Options
 
 This header tells the browser not to guess the MIME type of the content served, but instead trust the “Content-Type” header. Without the X-Content-Type-Options header set, some older browsers can incorrectly detect files as scripts and stylesheets, potentially leading to XSS attacks.
@@ -90,7 +93,7 @@ This header tells the browser not to guess the MIME type of the content served, 
 
     X-Content-Type-Options: nosniff
 
-
+---
 #### Referrer-Policy
 
 The header basically controls what is being sent in the referer header. The security benefit from using this header is to avoid situations where session identifiers or other sensitive information which is transmitted in the URL is passed to other domains via the referer header. There are different options here which range from sending no referer header whatsoever to sending only the domain (origin). The best setting must be determined based on the application's use of the referer header. The recommended setting "origin" only sends the domain name and not the path part of the URL. It is also chosen because it is supported across largest body of browsers. 
@@ -100,6 +103,8 @@ The header basically controls what is being sent in the referer header. The secu
     Referrer-Policy: origin
 
 We may also want to do "Referrer-Policy: strict-origin" to only send the referrer header to sites that are HTTPS to protect the user's privacy, but currently it's not supported on Edge and Safari. 
+
+---
 #### API
 
 For APIs we want to ensure traffic is encrypted and restrict the potential impact of XSS vulnerabilities e.g. in error pages then they can't be used to run Javascript due to the Content-Security Policy not allowing scripts or iframes. Note that for APIs with documentation on the same domain such as  Swagger, this won't work and would need to be adapted.
@@ -110,6 +115,8 @@ For APIs we want to ensure traffic is encrypted and restrict the potential impac
     Strict-Transport-Security: max-age=31536000
 
     X-Content-Type-Options: nosniff
+
+---
 
 ###### Resources:
 
