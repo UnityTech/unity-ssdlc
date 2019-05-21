@@ -1,5 +1,5 @@
 # unity-ssdlc
-![MWU](https://unity3d.com/profiles/unity3d/themes/unity/images/mwu/logos/madewith-unity-black.svg)
+![MWU](https://unity3d.com/profiles/unity3d/themes/unity/images/mwu/logos/madewith-unity-black.svg =800x)
 ## Intro and Overview
 A public version of Unity's internal SSDLC. Meant to provide an example framework, not just to share with other, but to also take contributions and continue to improve and evolve.
 
@@ -28,7 +28,7 @@ As a further supplemt to our SSDLC, the Unity Security team has developed severa
 We can't share all our presentations here. We wanted to make these relevant and personal to the teams we present to, so many contain findings in our own products, with real-time demos of us exploiting the vulnerabilities we've discoved in our own code! In this way, developers can see the real risk of insecure code, potentially in the code they wrote themselves :) We never shame or call out teams or specifically developers - this is meant to be a learning experience, not a hurtful one.
 
 ##### CTF(s)
-To go along with our mini-conferences, we also run a small CTF along side the presentations. This is meant to give our development teams the opportunity to have a hands-on experience with insecure code, starting with very simple examples, working up to more advanced challenges. This is not meant to be a full-fledged Defcon still CTF - we just want to teach some security basic, and whet the hacking appetite of our teams :) 
+To go along with our mini-conferences, we also run a small CTF along side the presentations. This is meant to give our development teams the opportunity to have a hands-on experience with insecure code, starting with very simple examples, working up to more advanced challenges. This is not meant to be a full fledged Defcon-style CTF - we just want to teach some security basic, and whet the hacking appetite of our teams :) 
 
 ## Contributions
 We're still working on how to accept contributions. Once we figure out that process, we'll post the details here and open up our repo accordingly.
