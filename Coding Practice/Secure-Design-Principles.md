@@ -1,6 +1,17 @@
 # Secure Design Principles [Coding Practice]
 <font size="-1">_Author: Carlo Valentin - Dec. 2018_</font>
 
+- [Minimize attack surface area](#minimize-attack-surface-area)
+- [Establist secure defaults](#establish-secure-defaults)
+- [Principle of least privilege](#principle-or-least-privilege)
+- [Principle of Defense in Depth](#principle-of-defense-in-depth)
+- [Fail securely](#fail-securely)
+- [Don’t trust services and validate externally sourced data](#dont-trust-services-and-validate-externally-sourced-data)
+- [Separation of duties and role based access](#separation-of-duties-and-role-based-access)
+- [Avoid security by obscurity](#avoid-security-by-obscurity)
+- [Keep security simple](#keep-security-simple)
+- [Fix security issues correctly](#fix-security-issues-correctly)
+
 ### Minimize attack surface area
 
 Every feature that is added to an application adds an unknown amount of risk to the overall application. The aim for secure development is to reduce the overall risk by reducing the attack surface, by designing features of an application to minimize the attack surface.

@@ -11,7 +11,7 @@ Golang is a strongly typed language that has taken steps to prevent security iss
 
 ##### Security Considerations
 
-The net/http multiplexer ServeMux takes care of sanitizing the URL request path, redirecting any request containing “.” or “..” elements or repeated slashes to an equivalent, cleaner URL
+The net/http multiplexer ServeMux takes care of sanitizing the URL request path, redirecting any request containing “.” or “..” elements or repeated slashes to an equivalent, cleaner URL.
 
 ##### Recommended Packages
 
@@ -40,7 +40,7 @@ The net/http multiplexer ServeMux takes care of sanitizing the URL request path,
 - [Go Security Protections Don’t Extend To C Code](#go-security-protections-dont-extend-to-c-code)
 - [Use crypto/rand Instead Of math/rand](#use-cryptorand-instead-of-mathrand)
 
-
+---
 #### Output Encoding with Native Templates
 ###### Description
 
@@ -52,12 +52,13 @@ Using the net/http package exposes web application users to cross-site scripting
 
 Use the html/template package to automatically escape HTML, CSS, JavaScript, and URIs. If the net/http package is used, use manual escaping and manually set the Content-Type, because it is set automatically depending on what is served.
 ###### Risk Rating
-
 High
-References
 
-https://golang.org/pkg/html/template/
+###### References
+
+- https://golang.org/pkg/html/template/
  
+---
 #### Beware Output Encoding Bypasses
 ###### Description
 
@@ -96,6 +97,7 @@ High
 - https://github.com/kennygrant/sanitize
 - https://github.com/microcosm-cc/bluemonday
 
+---
 #### Go Security Protections Don’t Extend To C Code
 ###### Description
 
@@ -111,8 +113,9 @@ Be aware that C code security concerns are still present when ran by a Go applic
 High
 ###### References
 
-https://golang.org/cmd/cgo/ 
+- https://golang.org/cmd/cgo/ 
 
+---
 #### Use crypto/rand Instead Of math/rand
 ###### Description
 
@@ -155,6 +158,5 @@ This example reads 10 cryptographically secure pseudorandom numbers from rand.Re
 High
 ###### References
 
-https://golang.org/pkg/crypto/rand/
-
-https://golang.org/pkg/crypto/rand/#example_Read
+- https://golang.org/pkg/crypto/rand/
+- https://golang.org/pkg/crypto/rand/#example_Read

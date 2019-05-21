@@ -44,7 +44,7 @@ Ruby gems have a signing mechanism in place, but it is not required - or widely 
 - http://guides.rubyonrails.org/v3.2.8/security.html
 - https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet
 
-### Recommendations
+## Recommendations
 #### Avoid Combing User Input with Dangerous Calls
 ###### Description
 
@@ -80,8 +80,9 @@ For executing system commands using user input, using a tool like Terrapin is pr
 High
 ###### References
 
-https://github.com/thoughtbot/terrapin
+- https://github.com/thoughtbot/terrapin
 
+---
 #### Use Proper REGEX Start and End of String Symbols
 ###### Description
 
@@ -98,22 +99,20 @@ The following REGEX filter is meant to accept only valid URLs
 
 Due to the ^ symbol use instead the \A symbol, the following submission would pass the filter because each line is processed separately and the second line matches:
 
- 
+    
 
-javascript:exploit_code();/*
+    javascript:exploit_code();/*
 
-http://hi.com
+    http://hi.com
 
-*/
+    */
 
  
 ###### How to fix?
 
 To fix this, the example issue should use the following REGEX:
 
- 
-
-/\Ahttps?:\/\/[^\n]+\z/i
+    /\Ahttps?:\/\/[^\n]+\z/i
 
  
 ###### Risk Rating
@@ -121,9 +120,9 @@ To fix this, the example issue should use the following REGEX:
 High
 ###### References
 
-http://guides.rubyonrails.org/security.html#regular-expressions
+- http://guides.rubyonrails.org/security.html#regular-expressions
 
- 
+---
 #### Ensure Dynamic Content is Encoded
 ###### Description
 
@@ -150,8 +149,9 @@ These methods of printing raw HTML to the page should only be used for trusting,
 High
 ###### References
 
-https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet#Cross-site_Scripting_.28XSS.29
+- https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet#Cross-site_Scripting_.28XSS.29
 
+---
 #### Exploitation of Mass Assignment (Versions 2.3.x and 3.x)
 ###### Description
 
@@ -165,16 +165,16 @@ An alternative for older versions of Rails is to blacklist specific model attrib
 
  
 
-config.active_record.whitelist_attributes = true
+    config.active_record.whitelist_attributes = true
 
 
 Whitelist example that allows access by role:
 
- 
+    
 
-attr_accessible :name
+    attr_accessible :name
 
-attr_accessible :name, :is_admin, :as => :admin
+    attr_accessible :name, :is_admin, :as => :admin
 
  
 ###### Why We Care
@@ -212,11 +212,11 @@ Do not disable strong parameters in modern versions of Rails. In older versions,
 Medium
 ###### References
 
-https://github.com/rails/strong_parameters
+- https://github.com/rails/strong_parameters
+- https://github.com/grosser/strong_parameters/tree/rails2
+- http://guides.rubyonrails.org/v3.2.8/security.html#mass-assignment
 
-https://github.com/grosser/strong_parameters/tree/rails2
-
-http://guides.rubyonrails.org/v3.2.8/security.html#mass-assignment
+---
 #### Enforce HTTPS and Strict Transport Security
 ###### Description
 
@@ -230,12 +230,12 @@ In Rails 3.1 and later, this can be accomplished by always forcing SSL connectio
 
  
 
-config.force_ssl = true
+    config.force_ssl = true
 ###### Risk Rating
 
 Medium
 
- 
+---  
 #### Prevent Logging of Sensitive Information
 ###### Description
 
@@ -249,7 +249,7 @@ When designing a Rail application, make sure to designate request parameters tha
 
  
 
-config.filter_parameters << :cc_number
+    config.filter_parameters << :cc_number
 
  
 ###### Risk Rating
@@ -257,8 +257,9 @@ config.filter_parameters << :cc_number
 Medium
 ###### References
 
-http://guides.rubyonrails.org/security.html#logging
- 
+- http://guides.rubyonrails.org/security.html#logging
+
+--- 
 #### Avoid Disabling deep_munge
 ###### Description
 
@@ -274,9 +275,9 @@ If it must be disabled, be fully aware of the vulnerabilities you are introducin
 Medium
 ###### References
 
-http://guides.rubyonrails.org/security.html#unsafe-query-generation
+- http://guides.rubyonrails.org/security.html#unsafe-query-generation
 
- 
+--- 
 #### Store the Rails Master Key in an Environmental Variable
 ###### Description
 
@@ -292,11 +293,10 @@ As with all secrets, AppSec recommends removing the key from the config/master.k
 Low
 ###### References
 
-http://guides.rubyonrails.org/security.html#custom-credentials
+- http://guides.rubyonrails.org/security.html#custom-credentials
+- https://confluence.hq.unity3d.com/display/IE/Vault
 
-https://confluence.hq.unity3d.com/display/IE/Vault
-
-
+---
 #### Don’t Allow User Input Determine Which View to Render
 ###### Description
 
@@ -310,8 +310,9 @@ Avoiding using user input to choose which view to render when certain views are 
 ###### Risk Rating
 
 Low
-
-Session Fixation
+ 
+ ---
+####Session Fixation
 ###### Description
 
 Session fixation is the term for when a pre-authentication session token used as the post-authentication session token. In other words, the a new session token is not set after authenticating. This is not an issue if header-based authentication is in use.
@@ -326,4 +327,4 @@ Use the reset_session() function after a user successfully authenticates to set 
 Low
 ###### References
 
-http://guides.rubyonrails.org/security.html#session-fixation-countermeasures
+- http://guides.rubyonrails.org/security.html#session-fixation-countermeasures

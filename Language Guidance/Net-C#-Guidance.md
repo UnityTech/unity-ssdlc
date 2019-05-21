@@ -6,6 +6,11 @@
 
  # Overview
 Microsoft's .Net (DotNet) framework, like most modern frameworks, is generally secure from memory corruptions and code control (ex., stack corruption) style attacks, as long as the framework is kept up-to-date with the latest version from Microsoft. However, over the years, there have been some features of the framework that are now considered unsafe, or do not provide the protections developers believe they do. Below is general guidance on what to watch out for when developing in .Net languages.
+
+- [Untrusted Code and Resource](#untrusted-code-and-resources)
+- [Handling User Input](#handling-user-input)
+
+### Recommendations
 #### Untrusted Code and Resources
 
 The following guidance is in regards to loading code or resources from an untrusted source, i.e., anything from the internet or not signed by Unity (or trusted 3rd party). When working with these types of resources, refer to the below:
@@ -27,6 +32,7 @@ In short, to quote the existing Microsoft guidance:
 
 >Code Access Security and Security-Transparent Code are not supported as a security boundary with partially trusted code. We advise against loading and executing code of unknown origins without putting alternative security measures in place.
 
+---
 #### Handling User Input
 
 The following guidance is largely relevant to ASP.Net and .Net Embedded browser support:
@@ -50,7 +56,7 @@ The following guidance is largely relevant to ASP.Net and .Net Embedded browser 
 - Be wary of user names that might have more than one canonical format. For example, you can often use either the MYDOMAIN\username form or the username@mydomain.example.com form.
   - (From https://github.com/dotnet/docs/blob/master/docs/standard/security/security-and-user-input.md)
 
- 
+ ---
 ###### References:
 
 - https://github.com/dotnet/docs/blob/master/docs/standard/security/secure-coding-guidelines.md

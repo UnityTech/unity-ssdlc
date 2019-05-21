@@ -5,9 +5,17 @@
 
 
 This guide will provide general guidance for developing more secure code in Node.js.
+- [Always Validate External Inputs](#always-validate-external-inputs)
+- [HTTP Headers](#http-headers)
+- [Use of eval()](#use-of-eval)
+- [Always Use HTTPS (>TLS1.0)](#always-use-https-tls10)
+- [Localhost isn’t inherently safe from the web](#localhost-isnt-inherently-safe-from-the-web)
+- [NPM Package Tools and Risks](#npm-package-tools-and-risks)
+
+
 
 ### Recommendations
-##### Always Validate External Inputs
+#### Always Validate External Inputs
 ###### Why We Care
 
 Generally the most dangerous part of any software is the point where it will process untrusted external data. As such, it is one of the most important areas to ensure attention is given.
@@ -21,6 +29,7 @@ Generally the most dangerous part of any software is the point where it will pro
         var list = new Widget [ untrustedListSize ];
         list[0] = new Widget();
     }
+
 <sub>_(Adapted from: https://cwe.mitre.org/data/definitions/20.html)_</sub>
 
 ###### How to Fix?
@@ -38,19 +47,19 @@ Though if the underlying code is vulnerable, this will lead to High sev vulnerab
 MITRE Guidance - https://cwe.mitre.org/data/definitions/20.html  
 
 OWASP Guidance - https://www.owasp.org/index.php/Data_Validation  
-#### HTTP Headers
+
+---
+### HTTP Headers
 ###### Why We Care
 
 HTTP headers can allow a page developer to inform the browser to apply various protections against web attacks, such as Clickjacking and XSS.
-Example of Issue
 
-X-Frame-Options - Protect from clickjacking
+###### Examples of Issue
 
-Strict-Transport-Security - Enforce HTTPS and protect against downgrade attacks
-
-X-XSS-Protection - Enable XSS protections in browsers that support this header
-
-Content-Security-Policy - Can restrict code script comes from and can be executed
+- X-Frame-Options - Protect from clickjacking
+- Strict-Transport-Security - Enforce HTTPS and protect against downgrade attacks
+- X-XSS-Protection - Enable XSS protections in browsers that support this header
+- Content-Security-Policy - Can restrict code script comes from and can be executed
 ###### How to Fix?
 
 Manually review and employ headers as appropriate for your HTTP connections. OWASP has nice list of relevant headers as part of their Secure Headers Project .
@@ -62,12 +71,11 @@ Further, the Helmet package (available via npm as well) is a frequently recommen
 Low-High
 ###### References
 
-https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#tab=Main  
+- https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#tab=Main  
+- Helmet - https://www.npmjs.com/package/helmet  
 
-Helmet - https://www.npmjs.com/package/helmet  
-
-
-#### Use of eval()
+---
+### Use of eval()
 ###### Why We Care
 
 Use of the eval() function is incredibly dangerous, and rarely actually needed. The function allows an attacker to simply and directly execute code on the target site.
@@ -82,12 +90,11 @@ Generally, it's completely unsafe to execute untrusted code, and as such, should
 Low - High
 ###### References
 
-https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Overlay_Extensions/XUL_School/Appendix_C:_Avoid_using_eval_in_Add-ons   (Talks about use in add-ons, but applies elsewhere as well)
+- https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Overlay_Extensions/XUL_School/Appendix_C:_Avoid_using_eval_in_Add-ons   (Talks about use in add-ons, but applies elsewhere as well)
+- Node.js VM - https://nodejs.org/api/vm.html
 
-Node.js VM - https://nodejs.org/api/vm.html
-
-
-#### Always Use HTTPS (>TLS1.0)
+---
+### Always Use HTTPS (>TLS1.0)
 ###### Why We Care
 
 HTTP traffic is unencrypted, meaning that any traffic that goes across untrusted/uncontrolled channels is completely untrustworthy. Further, on modern computers, the perf hit for HTTPS with effectively negligible given the increase in trust gained from an encrypted channel.
@@ -103,12 +110,11 @@ Nginx TLS - https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server
 Med
 References
 
-https://www.eff.org/https-everywhere
+- https://www.eff.org/https-everywhere
+- https://www.maxcdn.com/blog/ssl-performance-myth/  
 
-https://www.maxcdn.com/blog/ssl-performance-myth/  
-
-
-#### Localhost isn’t inherently safe from the web
+---
+### Localhost isn’t inherently safe from the web
 ###### Why We Care
 
 We’ve found that many teams have engineered interfaces hosting local client REST services mistakenly believing that binding to localhost proved protection from remote attackers. However, localhost can be reached from a web browser, leaving these services vulnerable to attack from malicious web pages.
@@ -129,7 +135,9 @@ Medium
 
 ###### References
 
-Express has a popular CORS library: https://github.com/expressjs/cors  
+- Express has a popular CORS library: https://github.com/expressjs/cors  
+
+---
 ### NPM Package Tools and Risks
 #### npm audit
 
@@ -153,10 +161,11 @@ Further, npmjs released the npm audit fix option that should automatically addre
 The tool will provide the risk rating for each vulnerability found.
 
 ###### References
-[npm audit](https://blog.npmjs.org/post/173719309445/npm-audit-identify-and-fix-insecure)
-[npm audit fix](https://blog.npmjs.org/post/174001864165/v610-next0)
+- [npm audit](https://blog.npmjs.org/post/173719309445/npm-audit-identify-and-fix-insecure)
+- [npm audit fix](https://blog.npmjs.org/post/174001864165/v610-next0)
 
-#### Outdated Packages
+---
+### Outdated Packages
 As with all 3rd party source code, be sure to use the latest available version of the package.
 ###### Why We Care
 
@@ -172,7 +181,7 @@ Use npm update,  or leverage the npm audit command described in this document.
 The Risk Rating of the vulnerability is identified by the vendor reporting the issue.
 
 
-###Additional Reading
+### Additional Reading
 - Fun read with real world Node.js security issues: https://www.owasp.org/images/f/fa/AppSecIL2016_NodeJS-Security_LiranTal.pdf
 - Security recommendations from the Express team: https://expressjs.com/en/advanced/best-practice-security.html  
 - OWASP’s Node Goat Project: https://github.com/OWASP/NodeGoat  

@@ -28,4 +28,4 @@ An example of security requirements that an application can encounter:
 
 ### Once I have these requirements, what do I do?
 
-A failure or flaw in the implementation of a security-related requirement can lead to additional various vulnerabilities or in some cases require a re-architecting of the application. As such, care needs to be taken when implementing the identified requirements. If you and your team are unsure about the design or implementation of security requirements, please schedule a [design review](./Design-Review.md) or [implementation review](./Implementation-Review.md) with the AppSec team in #support-security.
+A failure or flaw in the implementation of a security-related requirement can lead to additional various vulnerabilities or in some cases require a re-architecting of the application. As such, care needs to be taken when implementing the identified requirements. If you and your team are unsure about the design or implementation of security requirements, please schedule a [design review](./Design-Review.md) or [implementation review](./Implementation-Review.md) with the Unity AppSec team.

@@ -1,6 +1,5 @@
-# DRAFT
-# Secrets Management (i.e., Storing Passwords Safely) [Coding Practice] 
-<font size="-1">Authors: Shawn Verzilli, Tim Herold - Apr. 2019</font>
+# Secrets Management _(i.e., Storing Passwords Safely)_ [Coding Practice] 
+<font size="-1">_Authors: Shawn Verzilli, Tim Herold - Apr. 2019_</font>
 
 ## Description
 
@@ -9,7 +8,7 @@ Developing and deploying secure services and applications at Unity requires inte
 The secrets need to be high-entropy, unique per service, and unique per environment. In many cases this will lead to many secrets for a team to manage, and as such these secrets have frequently been stored checked in as part of configuration files - an insecure practice. Once saved into a configuration file, they are frequently, and accidentally, checked into your favorite version control system on a publicly accessible cloud-hosted repositories, and hence into the hands of attackers. These secrets cannot be stored in such a manner, and need to be kept in an access controlled environment.
 ### Why We Care
 
-Secrets are secret for a reason, and often provide access to a lot of data, computing resources or privileged accounts. It is therefore crucial that we handle secrets well, ensure we limit their scope and use least privilege, and make the probability of accidental leaks as small as possible. (See Common Control Framework security controls CCF-4.04 and CCF-4.05)
+Secrets are secret for a reason, and often provide access to a lot of data, computing resources or privileged accounts. It is therefore crucial that we handle secrets well, ensure we limit their scope and use least privilege, and make the probability of accidental leaks as small as possible. (See Unity's Common Control Framework security controls CCF-4.04 and CCF-4.05)
 ### Examples of Problematic/Incorrect Secrets Use
 
 We’ve had many instances of Unity credentials leaked via public Git repos. This could have given malicious actors access to internal systems, data, APIs and more. There have also been other examples such as accidentally hosting script files that contain credentials on a public web server.
@@ -17,7 +16,7 @@ We’ve had many instances of Unity credentials leaked via public Git repos. Thi
 It should go without saying, but when your credentials fall into someone else’s hands they can assume any of your privileges. A common example we see is someone granting themselves “Admin” so they do not have to concern themselves with identifying precisely the minimum privileges needed. They may only use these credentials for a small handful of API calls but when these credentials are exposed, a malicious actor can do anything “Admin” can do. These credentials are often exploited for launching cryptominers, ransomware attacks, or setting up backdoors for later use.
 
 This is not limited to the example of “Admin” by any means. For example, compromising a user grants access to all groups the user may be a member of. These groups have the potential to span teams, projects, accounts, and more. This is commonly seen when a developer uses their own LDAP/Google credentials to test out a prototype of what their working on, only to later check-in that code to save their progress. It’s a bad habit to get into, despite the convenience it offers.
-**To summarize/TL;DR, @Unity, Security has seen secrets (in the clear) in:**
+**To summarize, TL;DR - Commonly found secrets in code (unencrypted):**
 - Raw HTML pages
 - Deployed Javascript
 - Public Githubs
@@ -59,12 +58,12 @@ Common examples of secret usage are:
 ![Secrets on Fire](../images/secrets%20fire.png)
 
 
-As a rule of thumb, you should use temporary credentials at every opportunity. Not all systems are built in a way that supports this and so using a secrets management tool like Hashicorp Vault or AWS Secrets Manager is strongly recommended. Environment variables are passable but not recommended. You should never store secrets in code.
+As a rule of thumb, you should use temporary credentials at every opportunity. Not all systems are built in a way that supports this and so using a secrets management tool, like Hashicorp Vault or AWS Secrets Manager, is strongly recommended. Environment variables are passable but not recommended. You should never store secrets in code.
 ##### How to protect secrets
 
-After taking the steps above to prepare your application, leverage a secrets management infrastructure to safely store and access your secrets. Cloud options in Google Cloud KMS or Amazon AWS KMS. The Security Team currently doesn’t support the available cloud options, but have worked to build Unity’s internally maintained Vault system, currently maintained and supported by Infrastructure Engineering. Vault allows you to store secrets in a central, secure place. For details on using Vault for secrets management, see the APPENDIX in this document, or read more about Vault and how to get started go here. If you need support beyond the documentation, feel free to reach out to #ie-support-data-infra or #support-security on Slack. Note that Vault may not be a universal solution, so feel free to reach out early to be sure it’ll be a good solution for your product.
+After taking the steps above to prepare your application, leverage a secrets management infrastructure to safely store and access your secrets. Cloud options in Google Cloud KMS or Amazon AWS KMS.
 
-The application security team have tools monitoring for secrets in source code repositories, but this mechanism is only supposed to be the last line of defense and to avoid credential leaks it is up to the developer to be diligent when handling these sensitive pieces of data.
+The application security team has tools monitoring for secrets in source code repositories, but this mechanism is only supposed to be the last line of defense and to avoid credential leaks it is up to the developer to be diligent when handling these sensitive pieces of data.
 #### Secret Stores
 ###### HashiCorp Vault:
 
@@ -73,7 +72,7 @@ Vault supports a couple of options for secrets storage - Static and Dynamic. If 
 
 These are your traditional secrets. Think Username, Password, and/or API Key. These can be stored via the Vault command-line tools, for example:
 
-    vault write secret/stg/ads/ads-performance-valuation/AWS_ACCESS_KEY_ID secret=AKIAIIIDEADBEEF35A3D
+    vault write secret/stg/ads/ads-performance-valuation/AWS_ACCESS_KEY_ID secret=AKIAIII1337DEADBEEF
 
 _For more Vault guidance, see the linked guidance below, in the Appendix_
 
@@ -81,23 +80,22 @@ _For more Vault guidance, see the linked guidance below, in the Appendix_
 
 Vault has a variety of Secrets Engines to hook into services like AWS, GCP, SSH, PKI, (and more) to provide temporary credentials which expire on a time-based lease procured by Vault. In the example of the AWS Secrets Engine, Vault acts as an abstraction to an AWS STS call and serves up the resultant Access/Secret Key pair.
 
-For details on dynamic secrets, see Hashicorp’s guidance: Dynamic Secrets
-Vault Support
+For details on dynamic secrets, see Hashicorp’s guidance: [Dynamic Secrets Vault Support](https://learn.hashicorp.com/vault/getting-started/dynamic-secrets)
 
-If you need support in using or troubleshooting Vault, visit Slack channels #ie-support-data-infra or #support-security.
+If you need support in using or troubleshooting Vault, contact the Security Team
 ##### GCP
 
 The best practice for application authentication in Google Cloud is to use a Service Account. Rather than store the service account secret in the application source code, use an environment variable pointing to credentials outside of the application’s source code, such as Vault. Restrict who can act as service accounts. Users who are granted the Service Account Actor role for a service account can access all of the resources for which the service account has access.
 
-The Security team is still working to develop more complete guidance on managing GCP secrets; in the meantime, leverage Google’s own document: Understanding Service Accounts. As always, if further guidance is required, visit #support-security in Unity Slack.
+The Security team is still working to develop more complete guidance on managing GCP secrets; in the meantime, leverage Google’s own document: Understanding Service Accounts. As always, if further guidance is required, ask the Security Team.
 
 ##### AWS Keys:
 
 AWS keys generally come in the following format:
 
-    AWS_ACCESS_KEY_ID:AKIA***********VTLCD
+    AWS_ACCESS_KEY_ID:AKIA***********VT43D
 
-    AWS_SECRET_ACCESS_KEY:SYU********************************TUVCrG
+    AWS_SECRET_ACCESS_KEY:SYU********************************TUFYIG
 
 
 These keys are generated by AWS IAM or AWS STS.
@@ -137,7 +135,7 @@ High
 ---
 
 ##### Frequently Asked Questions - FAQ:
-The secrets are for my dev/staging/test/fantasy environment - do those still matter?
+###### The secrets are for my dev/staging/test/fantasy environment - do those still matter?
 
 Yes.
 
@@ -146,48 +144,29 @@ In the vast majority of cases, the dev/staging environments are nearly identical
 Beyond the direct risks to infrastructure, the secrets themselves are now also stored on the servers where the code is hosted, as well as all the developer workstations of anyone whom as cloned or forked the code. The assumption should be the secrets are in the open, as there's limited to no way to track of they've been spread.
 
 And of course, as is common with personal passwords, we see a high incident of re-use; so chances are, your staging secrets are the same as your production secrets.
-What about my test code?
+###### What about my test code?
 
 Similar to the answer above, but this can be slightly more nuanced. If the test code is leveraging 'fake' credentials (as in, don't actually work anywhere) to test parsing code or error handling, then this is probably fine. If these credentials are used for testing against a local, or ephemeral mock instance, then this is probably fine as well. The concern is around 'permanent' test facilities that are also hosted along side the rest of our infrastructure - wherein the same problems exists as do those in dev/staging environments.
-References
 
-https://confluence.hq.unity3d.com/display/SEC/Secret-Finder
+###### References
 
-https://github.com/yeyintminthuhtut/Awesome-Red-Teaming#-lateral-movement
+- https://github.com/yeyintminthuhtut/Awesome-Red-Teaming#-lateral-movement
 
-[Security Process] Risk Rating (aka., Security Bug Bar)
-
-Unity Security Bug Bar
-
+- [ Risk Rating (aka., Security Bug Bar) - (Security Process)](../Security%20Process/Risk-Rating.md)
 
 ## APPENDIX
-Vault Guidance
-Vault Usage
-
-Vault for developers: https://confluence.hq.unity3d.com/display/IE/Using+Vault+in+IE+Infra 
-
-Vault for shared accounts (ex. DB admin): https://confluence.hq.unity3d.com/display/IE/Using+Vault+To+Authenticate+To+Databases 
-Vault Administration
-
-Vault software Overview - https://confluence.hq.unity3d.com/display/IE/Vault+Enterprise 
-
-Unsealing Vault - https://confluence.hq.unity3d.com/display/IE/Unseal+Vault
-
-Vault in GKE - https://confluence.hq.unity3d.com/display/IE/Initialise+Vault+Integration+in+a+GKE+Cluster 
-Vault Resources
-
-Usage Guides - https://github.com/hashicorp/vault-guides
-
-Dynamic Secrets - https://www.hashicorp.com/blog/why-we-need-dynamic-secrets
-
+#### Vault Guidance
+- Vault for developers: https://confluence.hq.unity3d.com/display/IE/Using+Vault+in+IE+Infra 
+- Vault for shared accounts (ex. DB admin): https://confluence.hq.unity3d.com/display/IE/Using+Vault+To+Authenticate+To+Databases 
+- Vault software Overview - https://confluence.hq.unity3d.com/display/IE/Vault+Enterprise 
+- Unsealing Vault - https://confluence.hq.unity3d.com/display/IE/Unseal+Vault
+- Vault in GKE - https://confluence.hq.unity3d.com/display/IE/Initialise+Vault+Integration+in+a+GKE+Cluster 
 Secrets Engine - https://www.vaultproject.io/docs/secrets/index.html
-AWS Resources
+#### AWS Resources
+- Best Practices for Managing AWS Access Keys - https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+- Working with AWS Secrets Manager - https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating.html
+#### GCP Resources
 
-Best Practices for Managing AWS Access Keys - https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+- Understanding Service Accounts - https://cloud.google.com/iam/docs/understanding-service-accounts
 
-Working with AWS Secrets Manager - https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating.html
-GCP Resources
-
-Understanding Service Accounts - https://cloud.google.com/iam/docs/understanding-service-accounts
-
-Using Environment Variables - https://cloud.google.com/functions/docs/env-var 
+- Using Environment Variables - https://cloud.google.com/functions/docs/env-var 

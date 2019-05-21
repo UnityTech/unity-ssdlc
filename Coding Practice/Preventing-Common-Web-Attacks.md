@@ -42,7 +42,7 @@ References
 
 https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet
 
- 
+ ---
 ### All the cool kids use HTTP Security Headers
 ###### Description
 
@@ -72,6 +72,8 @@ https://infosec.mozilla.org/guidelines/web_security
 Unity's Security Teams has a tool for checking how your application grades based on its security headers here:
 
 https://appcollector.internal.unity3d.com/observatory/
+
+---
 ### Preventing XSS
 ###### Description
 
@@ -126,6 +128,7 @@ References
 
     https://csp.withgoogle.com/
 
+---
 ### Preventing SQL Injection
 ###### Description
 
@@ -168,7 +171,7 @@ https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet
 
 https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html (Example noSQL attacks)
 
- 
+--- 
 ### Preventing Cross-Site Request Forgery
 ###### Description
 
@@ -233,7 +236,7 @@ References
 
     https://www.netsparker.com/blog/web-security/same-site-cookie-attribute-prevent-cross-site-request-forgery/
 
- 
+ ---
 ### Credential Leaks
 ###### Description
 

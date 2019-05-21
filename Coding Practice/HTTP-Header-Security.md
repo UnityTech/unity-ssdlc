@@ -6,6 +6,15 @@ This document describes the HTTP security headers that we strongly recommend are
 Therefore, try to get some quick wins with headers such as: `HTTP Strict Transport Security`, `X-Frame-Options`, `X-XSS-Protection` and `X-Content-Type-Options` first.
 
 For applications that only offer web APIs; check the recommendations under [API](#api) at the bottom of the page.
+
+- [HTTP Strict Transport Security](#http-strict-transport-security)
+- [Content-Security-Policy](#content-security-polict)
+- [X-Frame-Options](#x-frame-options)
+- [X-XSS-Protection](#x-xss-protection)
+- [X-Content-Type-Options](#x-content-type-options)
+- [Referrer-Policy](#referrer-policy)
+- [API](#api)
+
 #### HTTP Strict Transport Security
 
 The strict transport security header tells browsers to load the website over encrypted connections only from now on. This helps avoid what is called SSL stripping attacks where an attacker who are in a Man-In-The-Middle position downgrades a user to an insecure connection.
@@ -61,7 +70,7 @@ Google has found that most CSP utilising whitelisting does not prevent XSS becau
 
  
 
-Note that you would need a reporting endpoint to receive the CSP violation reports at <mydomain>/csp-violation-report-endpoint for this last example to work properly. 
+Note that you would need a reporting endpoint to receive the CSP violation reports at `<your-domain-name>/csp-violation-report-endpoint` for this last example to work properly. 
 
 ---
 #### X-Frame-Options
@@ -109,7 +118,7 @@ We may also want to do "Referrer-Policy: strict-origin" to only send the referre
 
 For APIs we want to ensure traffic is encrypted and restrict the potential impact of XSS vulnerabilities e.g. in error pages then they can't be used to run Javascript due to the Content-Security Policy not allowing scripts or iframes. Note that for APIs with documentation on the same domain such as  Swagger, this won't work and would need to be adapted.
 
-**Recommended settings:**1202
+**Recommended settings:**
 
     Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
     Strict-Transport-Security: max-age=31536000
@@ -122,12 +131,8 @@ For APIs we want to ensure traffic is encrypted and restrict the potential impac
 
 For more best practices and recommendations by Mozilla on Web Application Security see this link:
 
-https://developers.google.com/web/fundamentals/security/csp/
-
-https://wiki.mozilla.org/Security/Guidelines/Web_Security
-
-https://csp.withgoogle.com/
-
-https://www.w3.org/TR/referrer-policy/
-
-http://caniuse.com/#feat=referrer-policy
+- https://developers.google.com/web/fundamentals/security/csp/
+- https://wiki.mozilla.org/Security/Guidelines/Web_Security
+- https://csp.withgoogle.com/
+- https://www.w3.org/TR/referrer-policy/
+- http://caniuse.com/#feat=referrer-policy
