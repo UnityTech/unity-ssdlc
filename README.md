@@ -1,5 +1,5 @@
 # unity-ssdlc
-![MWU](https://unity3d.com/profiles/unity3d/themes/unity/images/mwu/logos/madewith-unity-black.svg =800x)
+![MWU](https://unity3d.com/profiles/unity3d/themes/unity/images/mwu/logos/madewith-unity-black.svg | width=800)
 ## Intro and Overview
 A public version of Unity's internal SSDLC. Meant to provide an example framework, not just to share with other, but to also take contributions and continue to improve and evolve.
 
