@@ -4,15 +4,19 @@
 ## Guidelines Overview
 
 Cryptographic requirements at Unity are heavily influenced by NIST's *Cryptographic Standards and Guidelines (CSRC)* documentation. Below are our condensed recommendations.
+### Recommended Libraries
+- [libsodium](https://libsodium.org) - _([Github](https://github.com/jedisct1/libsodium))_
+- [OpenSSL](https://www.openssl.org/) - _([Github](https://github.com/openssl/openssl))_
+
+> NOTE: Where possible, we recommend Elliptic Curve Cryptography (ECC / ECDH), with Curve25519 (for signatures and key exchange)
 
 ### Usage Guidance
-###### TLS - Cipher Suites
+##### TLS - Cipher Suites
 
 _Minimum TLS version = TLS1.2._
-All cipher suites below should be compatible with version > TLS 1.2.  
-SSL 3.0 and below are not allowed, and considered unsafe.
+All cipher suites below should be compatible with version >= TLS 1.2.  
+SSL 3.0 and below are not allowed.
 Accepted TLS Cipher suites:
-- TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_RSA_WITH_AES_128_CBC_SHA
 - TLS_RSA_WITH_AES_256_CBC_SHA
 - TLS_RSA_WITH_AES_128_GCM_SHA256
@@ -22,13 +26,10 @@ Accepted TLS Cipher suites:
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA
 - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
-- TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
-<sub>3DES ciphers are accepted for maximum interoperability - other ciphers should be chosen as 3DES will likely be deprecated</sub>
 
-###### Hash Algorithms
+##### Hash Algorithms
 
 - Language Agnostic
   - SHA-512

@@ -18,15 +18,15 @@ This document provides guidelines for how to implement authentication and author
 ### Use a Trusted Identity Provider
 ###### Description
 
-Most of our users will be accessing services related to Unity, and we should leverage Genesis and Unity ID to authenticate those users to any new services or publicly facing applications. Using a single, unified identity to authenticate a user will make it easy for the user to use a new service and application.
+Most of our users will be accessing services related to Unity, and we should Unity ID to authenticate those users to any new services or publicly facing applications. Using a single, unified identity to authenticate a user will make it easy for the user to use a new service and application.
 
-When creating internal applications, Active Directory should be used to validate a user using their known credentials. In the future, this will be replaced with integration with Okta to authenticate a user.
+When creating internal applications, validate users via their IT issued credentials. 
 ###### Why We Care
 
 Many services will require authentication as a requirement. No authentication allows for anonymous access, which prevents proper logging and brings the risk of trivial information disclosure. However, designing an entire authentication service for you an application is also no trivial task, with many caveats that can lead to leaked/bypassed credentials, and a number of other issues. By using a trusted identity provider, the security team can work on securing a small number of authentication platforms to the benefit of a number of teams at Uniyt.
 ###### How to Fix?
 
-Determine if your application is an internal or external application. If it is external, contact Genesis and Security to integrate your application with Unity ID. If it is internal, contact IT to integrate with Active Directory (and Okta in the future).
+Determine if your application is an internal or external application. If it is external, contact Genesis and Security to integrate your application with Unity ID. If it is internal, contact IT to integrate with out internal authentication system.
 ###### Risk Rating
 
 High

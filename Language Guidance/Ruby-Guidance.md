@@ -294,7 +294,6 @@ Low
 ###### References
 
 - http://guides.rubyonrails.org/security.html#custom-credentials
-- https://confluence.hq.unity3d.com/display/IE/Vault
 
 ---
 #### Don’t Allow User Input Determine Which View to Render

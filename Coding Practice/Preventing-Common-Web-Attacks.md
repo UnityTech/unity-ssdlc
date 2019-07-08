@@ -23,9 +23,9 @@ Clickjacking, also known as a "UI redress attack", occurs when an attacker uses 
 With this attack an attacker can trick the user into performing sensitive actions on a page that only the user has access to.
 ###### Example of Issue
 
-Say that we have a “Pay out” button on our internal Ads Payout tool and the application does not implement any protection against Clickjacking. An attacker that knows the internal URL for the tool can now include a hidden iframe on his site www.cuteandfunnypuppies.com:
+Say that we have a “Pay out” button on our internal Ads Payout tool and the application does not implement any protection against Clickjacking. An attacker that knows the internal URL for the tool can now include a hidden iframe on his site `www.cute-and-funny-puppies.net`:
 
-<iframe src=”https://ads-payout-tool.hq.unity3d.com” style=”opacity:100”></iframe>
+<iframe src=”https://ads-awesome-payout-tool.unity3d.com” style=”opacity:100”></iframe>
 
 When an admin that gets bored of approving payouts visits the attacker’s site to view some funny dog pictures, he simultaneously gets tricked into approving a payout for an attacker by clicking an element on the site that really clicks the payout button in the hidden iframe.
 ###### How to Fix?
@@ -53,11 +53,11 @@ Setting HTTP Security headers mostly protects your users by turning on security 
 ###### Example of Issue
 
 For example: Almost all web applications redirect from HTTP->HTTPS so that users don’t have to type https:// at the start of the url when they visit your site. However, if the user already had an active session on the site, the browser might send some sensitive information on that very first HTTP request before it gets redirected. This information can be sniffed by an attacker unless we take some precautions and tell it to always browse Unity applications over an encrypted connection. This is one example of an issue that HTTP Security headers can help with.
-How to Fix?
+###### How to Fix?
 
 We have a whole page dedicated to setting HTTP Security Headers which can be found here:
+[HTTP Header Security](./Coding%20Practive/HTTP-Header-Security.md)
 
-https://confluence.hq.unity3d.com/display/SEC/HTTP+Header+Security
 
 Read through the recommendations, add your headers in the early phases of the project, and make sure to choose a modern front-end technology that is friendly to Content Security Policy.
 ###### Security Level
@@ -69,9 +69,8 @@ Mozilla has a great web security guideline reference here which includes a lot a
 
 https://infosec.mozilla.org/guidelines/web_security
 
-Unity's Security Teams has a tool for checking how your application grades based on its security headers here:
-
-https://appcollector.internal.unity3d.com/observatory/
+Unity's Security Team has a tool for checking how your application grades based on its security headers here:
+[AppCollector](https://github.com/UnityTech/appcollector/) - _(Currently Internal Only - Public Release TBD)_
 
 ---
 ### Preventing XSS
@@ -246,7 +245,7 @@ Application development requires integration with a growing number of services. 
 Secrets are secret for a reason and often provide access to a lot of data, computing resources or privileged accounts. It is therefore crucial that we handle secrets well, and make the probability of accidental leaks as small as possible.
 ###### Example of Issue
 
-We’ve had many instances of Unity credentials leaked via public Git repos. This could have given malicious actors access to internal systems, data, apis and more. There have also been other examples such as accidentally hosting script files that contain credentials on a public web server.
+Credential leaks to Github is a common, and troublesome issue within the industry. This can give malicious actors access to internal systems, data, apis and more. There are also other examples, such as accidentally hosting script files that contain credentials on a public web server.
 ###### How to Fix?
 
 When developing an application it is best practice to load secrets from environment variables.
@@ -263,4 +262,4 @@ Security Level
 Leaking credentials can be critical as they often grant a high level of access to Unity systems and can lead to compromise of data and systems.
 References
 
-https://confluence.hq.unity3d.com/display/SEC/Secret-Finder
+https://github.com/UnityTech/Secret-Finder - _(Currently Internal Only - Public Release TBD)

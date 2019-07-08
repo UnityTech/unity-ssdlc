@@ -11,7 +11,7 @@ The secrets need to be high-entropy, unique per service, and unique per environm
 Secrets are secret for a reason, and often provide access to a lot of data, computing resources or privileged accounts. It is therefore crucial that we handle secrets well, ensure we limit their scope and use least privilege, and make the probability of accidental leaks as small as possible. (See Unity's Common Control Framework security controls CCF-4.04 and CCF-4.05)
 ### Examples of Problematic/Incorrect Secrets Use
 
-We’ve had many instances of Unity credentials leaked via public Git repos. This could have given malicious actors access to internal systems, data, APIs and more. There have also been other examples such as accidentally hosting script files that contain credentials on a public web server.
+Credential leaks to Github are a common, and troublesome issue within the industry. This can give malicious actors access to internal systems, data, apis and more. There are also other examples, such as accidentally hosting script files that contain credentials on a public web server.
 
 It should go without saying, but when your credentials fall into someone else’s hands they can assume any of your privileges. A common example we see is someone granting themselves “Admin” so they do not have to concern themselves with identifying precisely the minimum privileges needed. They may only use these credentials for a small handful of API calls but when these credentials are exposed, a malicious actor can do anything “Admin” can do. These credentials are often exploited for launching cryptominers, ransomware attacks, or setting up backdoors for later use.
 
@@ -129,7 +129,7 @@ For secure, maintainable key handling the following criteria must be adhered to:
 
 Leaking credentials can be critical as they often grant a high level of access to Unity systems and can lead to compromise of data and systems. Credential leaks are historically a serious source of breaches throughout the industry, and require very little expertise from attackers to exploit. 
 
-######Risk Rating:
+###### Risk Rating:
 High
  
 ---
@@ -156,11 +156,6 @@ Similar to the answer above, but this can be slightly more nuanced. If the test 
 
 ## APPENDIX
 #### Vault Guidance
-- Vault for developers: https://confluence.hq.unity3d.com/display/IE/Using+Vault+in+IE+Infra 
-- Vault for shared accounts (ex. DB admin): https://confluence.hq.unity3d.com/display/IE/Using+Vault+To+Authenticate+To+Databases 
-- Vault software Overview - https://confluence.hq.unity3d.com/display/IE/Vault+Enterprise 
-- Unsealing Vault - https://confluence.hq.unity3d.com/display/IE/Unseal+Vault
-- Vault in GKE - https://confluence.hq.unity3d.com/display/IE/Initialise+Vault+Integration+in+a+GKE+Cluster 
 Secrets Engine - https://www.vaultproject.io/docs/secrets/index.html
 #### AWS Resources
 - Best Practices for Managing AWS Access Keys - https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
