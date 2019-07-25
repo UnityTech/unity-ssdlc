@@ -120,7 +120,7 @@ References
 We’ve found that many teams have engineered interfaces hosting local client REST services mistakenly believing that binding to localhost proved protection from remote attackers. However, localhost can be reached from a web browser, leaving these services vulnerable to attack from malicious web pages.
 ###### Example of Issue
 
-See UNITY-SEC-844 @ https://unity3d.com/security#issues
+See CVE-2017-12939 @ https://unity3d.com/security#CVE-2017-12939
 
 This vulnerability was a remote code execution vulnerability found in the Unity Editor wherein, if a malicious website was opened by a user, the attacker could run arbitrary code on the victim’s machine, via a REST service bound to localhost , running in the Editor.
 ###### How to Fix?

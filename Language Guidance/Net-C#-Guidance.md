@@ -24,11 +24,9 @@ The following guidance is in regards to loading code or resources from an untrus
   - Solution: Use DataContractSerialiazer as part of serializing objects.
 - Do not use Distributed Component Object Model (DCOM).
   - Problem: Again, thanks to James Forshaw, it was determined that DCOM was generally unsafe, and has issues with safe (or unsafe?) object serialization.
-  - Solution: Don't use it at all. Consider named pipes for local services (available cross-platform). Avoid HTTP/REST-like endpoints if possible, as they can be difficult to protect against browser attacks - see UNITY-SEC-844.
+  - Solution: Don't use it at all. Consider named pipes for local services (available cross-platform). Avoid HTTP/REST-like endpoints if possible, as they can be difficult to protect against browser attacks - see [CVE-2017-12939](https://unity3d.com/security#CVE-2017-12939).
 
- 
-
-In short, to quote the existing Microsoft guidance:
+In short, to quote the existing [Microsoft guidance](https://docs.microsoft.com/en-us/dotnet/standard/security/secure-coding-guidelines):
 
 >Code Access Security and Security-Transparent Code are not supported as a security boundary with partially trusted code. We advise against loading and executing code of unknown origins without putting alternative security measures in place.
 

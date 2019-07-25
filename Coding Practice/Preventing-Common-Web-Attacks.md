@@ -245,7 +245,7 @@ Application development requires integration with a growing number of services. 
 Secrets are secret for a reason and often provide access to a lot of data, computing resources or privileged accounts. It is therefore crucial that we handle secrets well, and make the probability of accidental leaks as small as possible.
 ###### Example of Issue
 
-Credential leaks to Github is a common, and troublesome issue within the industry. This can give malicious actors access to internal systems, data, apis and more. There are also other examples, such as accidentally hosting script files that contain credentials on a public web server.
+Credential leaks to Github are a common, and troublesome issue within the industry. This can give malicious actors access to internal systems, data, apis and more. There are also other examples, such as accidentally hosting script files that contain credentials on a public web server.
 ###### How to Fix?
 
 When developing an application it is best practice to load secrets from environment variables.
@@ -262,4 +262,4 @@ Security Level
 Leaking credentials can be critical as they often grant a high level of access to Unity systems and can lead to compromise of data and systems.
 References
 
-https://github.com/UnityTech/Secret-Finder - _(Currently Internal Only - Public Release TBD)
+https://github.com/UnityTech/Secret-Finder - _(Currently Internal Only - Public Release TBD)_
