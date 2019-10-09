@@ -10,55 +10,45 @@
 | :--- | :--- | :--- | :--- | :--- |
 | Security Requirements | Design Review & Threat Models |  - Static Analysis Tools<br> - Secure Coding | - Ask in Slack <br>- Security Testing | - Pentest in Product<br>- Incident Response Support |
 
-
 ### Unity SSDLC Overview
 
-The goal of Unity's SSDLC provide product teams guidance on how to include software security practices into their existing development process. The phases above may not be formally implemented or recognized by your team, but they do generally represent how all software is developed, implicitly or explicitly. Following this model, you are able to best determine what services the Unity Security team provides based on what phase of the life-cycle you are currently in, with your product.
+The goal of Unity's SSDLC provide product teams and developers guidance on how to leverage software security practices into their existing development process. The phases in the graphic above may not be formally implemented or recognized by your team, but they do generally represent how all software is developed, implicitly or explicitly. Following this model, you are able to best determine what services the Unity Security team provides based on what phase of of the development life-cycle you are currently in with your product.
 
-The SSDLC will continue to evolve, and include services from the broader Security teams; we'll soon be adding links to guidance from Audit & Compliance, Infrastructure Security, SOC, Incident Response, and Product Security.
+The SSDLC will continue to evolve, and include services from the broader Security teams; we'll soon be adding links to guidance from our Program Management team, Infrastructure Security, SOC, Incident Response, and Application Security.
 
-All feedback is welcome - feel free to update/comment on the docs directly or chat with the team on Slack or email.
+All feedback is welcome - feel free to update/comment the docs directly or chat with the team on Slack or email.
 
 Our SSDLC is currently organized under the following topics:
-- [Coding Practice guides](unity.com)
-- [Language Guidance articles](unity.com)
-- [Security Process documentation](unity.com)
-- [Tools & Automation guidance](unity.com)
+- [Coding Practice](./Coding%20Practice)
+- [Language Best Practices](./Language%20Guidance)
+- [Security Process](./Security%20Process)
+- [Tools & Automation](./Tools%20and%20Automation)
 
-Also, be sure to keep an eye out for on-site trainings, which will be announced (and archived) here -> [Developer Security Trainings](unity.com)
+Also, be sure to keep an eye out for on-site trainings, which will be announced (and archived) here -> [Developer Security Trainings](./Trainings/reaedme.md)
 
-### Suggested SSDLC Topics and Articles
-##### Language Specific Guidance
-- [Golang](unity.com)
-- [Node.js](unity.com)
-- [Ruby](unity.com)
-- [C#](unity.com)
-
-##### Secure Coding Guidance
-- [API Best Practices](./Coding%20%Practice/API-Best-Practices.md)
-- [Authentication/Authorization Best Practices](./Coding%20%Practice/AuthZ-AuthN-Guidelines.md)
-- [Preventing Common Web Attacks](unity.com)
-
-##### Security Automation and Tooling
-
-- [AppCollector](unity.com) - Onboard your project/product with Security
-- [Vault](unity.com) - Secrets management service
-- [Constable](unity.com) - Service providing file inspection to protect agents malware and malicious files
-- [SourceClear](unity.com) - Dependency version checking and static analysis 
-  -  [SourceClear](unity.com) Remediation
-
-
-## List of Articles
+## Shortcut List of Articles 
 #### _Coding Practice_
-- [API Best Practices](./Code%20Practice/API-Best-Practices.md)
-- [Authorization & Authentication Guidelines](./Code%20Practice/AuthZ-AuthN-Guidelines.md)
-- [Cryptographic Guidelines](./Code%20Practice/Cryptographic-Guidelines.md)
-- [HTTP Header Security](./Code%20Practice/HTTP-Header-Security.md)
-- [Preventing Common Web Attacks](./Code%20Practice/Preventing-Common-Web-Attacks.md)
-- [Secrets Management](./Code%20Practice/Secrets-Management.md)
-- [Secure Design Principles](./Code%20Practice/Secure-Design-Principles.md)
-#### _Language Guidance_
+- [API Best Practices](./Coding%Practice/API-Best-Practices.md)
+- [Authorization & Authentication Guidelines](./Coding%Practice/AuthZ-AuthN-Guidelines.md)
+- [Cryptographic Guidelines](./Coding%Practice/Cryptographic-Guidelines.md)
+- [HTTP Header Security](./Coding%Practice/HTTP-Header-Security.md)
+- [Preventing Common Web Attacks](./Coding%Practice/Preventing-Common-Web-Attacks.md)
+- [Secrets Management](./Coding%Practice/Secrets-Management.md)
+- [Secure Design Principles](./Coding%Practice/Secure-Design-Principles.md)
+- [Electron Best Practices](./Code%Practice/Electron-Guidance.md)
+
+#### _Language Best Practices_
+- [Golang](./Language%20Guidance/Golang-Guidance.md)
+- [Node.js](./Language%20Guidance/Nodejs-Guidance.md)
+- [Ruby](./Language%20Guidance/Ruby-Guidance.md)
+- [C#](./Language%20Guidance/Net-C#-Guidance.md)
 
 #### _Security Process_
+- [Design Review](./Security%20Process/Design-Review.md)
+- [Implementation Review](./Security%20Process/Implementation-Review.md)
+- [Risk Rating](./Security%20Process/Risk-Rating.md)
+- [Security Requirements](./Security%20Process/Security-Requirements.md)
+- [Bug Bar](./Security%20Process/Bug-Bar.md)
 
 #### _Tools & Automation_
+- [Tools & Automation](./Tools%20and%20Automation/readme.md)
