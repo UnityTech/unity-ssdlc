@@ -1,3 +1,7 @@
+Text is licensed under CC BY-NC-SA 2.0 (https://creativecommons.org/licenses/by-nc-sa/2.0/);
+
+Code snippets licensed under MIT:
+
 MIT License
 
 Copyright (c) 2019 Unity Technologies
