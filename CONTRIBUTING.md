@@ -2,11 +2,16 @@
 
 ## If you are interested in contributing, here are some ground rules:
 
+### Communication
+First, please read through our code of conduct, as we expect all our contributors to follow it.
+
+Second, before starting on a project that you intend to contribute to the unity-ssldc, we strongly recommend posting on our Issues page and briefly outlining the changes you plan to make. This will enable us to provide some context that may be helpful for you. This could range from advice and feedback on how to optimally perform your changes or reasons for not doing it.
+
 ### Document Style
 #### Basics
 - All contributions will be received as PRs - just read the recommendation below first please! 😁
 - This is intended to be a technical reference for other collegeaues in the security community, so the language and style should reflect that.
-- You'll notice that our language if fairly casual for this type of content, but keep the language civil/mild and avoid using too much lingo when writing, and when using an abbreviation, please provide he definition upon its first use. 
+- You'll notice that our language if fairly casual for this type of content, but keep the language civil/mild and avoid using too much lingo when writing, and when using an abbreviation, please provide he definition upon its first use. Also refer to our our official [Code of Conduct](./CODE-OF-CONDUCT.md).
 - Given the nature of this content, it's ultimately meant for developers writing the code, not just security folks looking at it - it's not productive to write an article that not everyone can understand. Keep things simple, but accurate.
 
 #### Article Updates
@@ -44,5 +49,4 @@ We'd love to see industry specific versions, or flavors, of this SSDLC being dev
 ---
 
 
-## All contributions are subject to the [Unity Contribution Agreement(UCA)](https://unity3d.com/legal/licenses/Unity_Contribution_Agreement)
-By making a pull request, you are confirming agreement to the terms and conditions of the UCA, including that your Contributions are your original creation and that you have complete right and authority to make your Contributions.
+## All contributions are governed by the [Apache 2.0 license](./LICENSE.md).
