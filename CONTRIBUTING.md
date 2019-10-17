@@ -43,7 +43,7 @@ If you disagree with an editorial decision, we'll be open to the conversation. U
 
 ## Forking
 **Please fork!**
-We'd love to see industry specific versions, or flavors, of this SSDLC being developed. We know that some of the guidance here may be too specific, or not specific enough, in areas that are important to your business or industry. Assuming all this goes well, we'll likely have our own fork to more narrowly focus recommendations for game developers and studios.
+We'd love to see industry specific versions, or flavors, of this SSDLC being developed. We know that some of the best practices here may be too specific, or not specific enough, in areas that are important to your business or industry. Assuming all this goes well, we'll likely have our own fork to more narrowly focus recommendations for game developers and studios.
 
 
 ---

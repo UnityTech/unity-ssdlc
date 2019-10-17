@@ -1,4 +1,4 @@
-# .Net/C# Guidelines [Language Guidance]
+# .Net/C# Best Practices [Language Best Practices]
 <font size="-1">_Author: Brandon Caldwell - Jan. 2019_</font>
 
 - [Untrusted Code and Resources](#untrusted-code-and-resources)
@@ -13,7 +13,7 @@ Microsoft's .Net (DotNet) framework, like most modern frameworks, is generally s
 ### Recommendations
 #### Untrusted Code and Resources
 
-The following guidance is in regards to loading code or resources from an untrusted source, i.e., anything from the internet or not signed by Unity (or trusted 3rd party). When working with these types of resources, refer to the below:
+The following best practices are in regards to loading code or resources from an untrusted source, i.e., anything from the internet or not signed by Unity (or trusted 3rd party). When working with these types of resources, refer to the below:
 
 - Do not use partial trusted code, Code Access Security (CAS), or AllowPartiallyTrustedCaller.
   - Problem: CAS was billed as a way to load untrusted libraries/code at runtime, by assigning 'trust levels' to various portions of code. Microsoft now recommends against using CAS as a means to protect against malicious code. Partial trust code and AllowPartiallyTrustedCaller has similar issues, wherein is does not provide any effective protections.
@@ -26,14 +26,14 @@ The following guidance is in regards to loading code or resources from an untrus
   - Problem: Again, thanks to James Forshaw, it was determined that DCOM was generally unsafe, and has issues with safe (or unsafe?) object serialization.
   - Solution: Don't use it at all. Consider named pipes for local services (available cross-platform). Avoid HTTP/REST-like endpoints if possible, as they can be difficult to protect against browser attacks - see [CVE-2017-12939](https://unity3d.com/security#CVE-2017-12939).
 
-In short, to quote the existing [Microsoft guidance](https://docs.microsoft.com/en-us/dotnet/standard/security/secure-coding-guidelines):
+In short, to quote the existing [Microsoft documentation - Secure Coding Guidelines](https://docs.microsoft.com/en-us/dotnet/standard/security/secure-coding-guidelines):
 
 >Code Access Security and Security-Transparent Code are not supported as a security boundary with partially trusted code. We advise against loading and executing code of unknown origins without putting alternative security measures in place.
 
 ---
 #### Handling User Input
 
-The following guidance is largely relevant to ASP.Net and .Net Embedded browser support:
+The following best practices is largely relevant to ASP.Net and .Net Embedded browser support:
 
 - Any user data in a server response runs in the context of the server's site on the client. If your Web server takes user data and inserts it into the returned Web page, it might, for example, include a `<script>` tag and run as if from the server.
 - Remember that the client can request any URL.

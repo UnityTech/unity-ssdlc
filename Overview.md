@@ -12,15 +12,15 @@
 
 ### Unity SSDLC Overview
 
-The goal of Unity's SSDLC provide product teams and developers guidance on how to leverage software security practices into their existing development process. The phases in the graphic above may not be formally implemented or recognized by your team, but they do generally represent how all software is developed, implicitly or explicitly. Following this model, you are able to best determine what services the Unity Security team provides based on what phase of of the development life-cycle you are currently in with your product.
+The goal of Unity's SSDLC provide product teams and developers best practices on how to leverage software security practices into their existing development process. The phases in the graphic above may not be formally implemented or recognized by your team, but they do generally represent how all software is developed, implicitly or explicitly. Following this model, you are able to best determine what services the Unity Security team provides based on what phase of of the development life-cycle you are currently in with your product.
 
-The SSDLC will continue to evolve, and include services from the broader Security teams; we'll soon be adding links to guidance from our Program Management team, Infrastructure Security, SOC, Incident Response, and Application Security.
+The SSDLC will continue to evolve, and include services from the broader Security teams; we'll soon be adding links to docukments from our Program Management team, Infrastructure Security, SOC, Incident Response, and Application Security.
 
 All feedback is welcome - feel free to update/comment the docs directly or chat with the team on Slack or email.
 
 Our SSDLC is currently organized under the following topics:
 - [Coding Practice](./Coding%20Practice)
-- [Language Best Practices](./Language%20Guidance)
+- [Language Best Practices](./Language%20Best%20Practices)
 - [Security Process](./Security%20Process)
 - [Tools & Automation](./Tools%20and%20Automation)
 
@@ -35,13 +35,13 @@ Also, be sure to keep an eye out for on-site trainings, which will be announced 
 - [Preventing Common Web Attacks](./Coding%Practice/Preventing-Common-Web-Attacks.md)
 - [Secrets Management](./Coding%Practice/Secrets-Management.md)
 - [Secure Design Principles](./Coding%Practice/Secure-Design-Principles.md)
-- [Electron Best Practices](./Code%Practice/Electron-Guidance.md)
+- [Electron Best Practices](./Code%Practice/Electron-Best-Practices.md)
 
 #### _Language Best Practices_
-- [Golang](./Language%20Guidance/Golang-Guidance.md)
-- [Node.js](./Language%20Guidance/Nodejs-Guidance.md)
-- [Ruby](./Language%20Guidance/Ruby-Guidance.md)
-- [C#](./Language%20Guidance/Net-C#-Guidance.md)
+- [Golang](./Language%20Best%20Practices/Golang-Best-Practices.md)
+- [Node.js](./Language%20Best%20Practices/Nodejs-Best-Practices.md)
+- [Ruby](./Language%20Best%20Practices/Ruby-Best-Practices.md)
+- [C#](./Language%20Best%20Practices/Net-C#-Best-Practices.md)
 
 #### _Security Process_
 - [Design Review](./Security%20Process/Design-Review.md)

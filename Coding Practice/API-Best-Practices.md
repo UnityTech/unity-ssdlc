@@ -4,7 +4,7 @@
 ## Overview
 
 This document covers general security guidelines for API endpoints within Unity. These guidelines will cover general points like:
-- [Access control guidance](#access-controls)
+- [Access control best practices](#access-controls)
 - [Input validation](#input-validation)
 - [Request verification](#request-integrity)
 - [Replay attacks](#replay-attacks)
