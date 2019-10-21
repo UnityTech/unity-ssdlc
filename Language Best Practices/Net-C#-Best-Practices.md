@@ -5,7 +5,7 @@
 - [Handling User Input](#handling-user-input)
 
  # Overview
-Microsoft's .Net (DotNet) framework, like most modern frameworks, is generally secure from memory corruptions and code control (ex., stack corruption) style attacks, as long as the framework is kept up-to-date with the latest version from Microsoft. However, over the years, there have been some features of the framework that are now considered unsafe, or do not provide the protections developers believe they do. Below is general guidance on what to watch out for when developing in .Net languages.
+Microsoft's .Net (DotNet) framework, like most modern frameworks, is generally secure from memory corruptions and code control (ex., stack corruption) style attacks, as long as the framework is kept up-to-date with the latest version from Microsoft. However, over the years, there have been some features of the framework that are now considered unsafe, or do not provide the protections developers believe they do. Below is general best practices on what to watch out for when developing in .Net languages.
 
 - [Untrusted Code and Resource](#untrusted-code-and-resources)
 - [Handling User Input](#handling-user-input)

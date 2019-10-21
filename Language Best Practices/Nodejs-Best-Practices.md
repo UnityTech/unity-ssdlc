@@ -1,10 +1,10 @@
-# Node.js Secure Development [Language Guidance]
+# Node.js Secure Development [Language Best Practices]
 <font size="-1">_Author: Brandon Caldwell - Dec. 2018_</font>
 
 ### Overview
 
 
-This guide will provide general guidance for developing more secure code in Node.js.
+This guide will provide general best practices for developing more secure code in Node.js.
 - [Always Validate External Inputs](#always-validate-external-inputs)
 - [HTTP Headers](#http-headers)
 - [Use of eval()](#use-of-eval)

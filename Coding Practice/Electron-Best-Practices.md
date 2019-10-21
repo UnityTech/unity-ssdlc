@@ -1,4 +1,4 @@
-# Electron Guidelines [Language Guidance]
+# Electron Best Practices [Language Best Practices]
 <font size="-1">_Author: Andrew Luke - Dec. 2018_</font>
 
 ### Overview 

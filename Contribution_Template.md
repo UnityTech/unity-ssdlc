@@ -10,7 +10,7 @@ _\<Table of Contents of high-level Sections>_
 
 **Relevant Article Context** is a good section to give some extra info to help build context for the article. For example, for the purpose of this template, this is a recommended guide for creating a _new_ article. You'll find that some of the already written article do not yet fit this template. While we'll continue to work on the articles to get them into a more consistent format, it's safe to assume that not all content will fir this layout. 
 
-**More relevant context** can be used to continue to flesh out the article. There's no hard guidance for length here, but it probably shouldn't be the bulk of the article.
+**More relevant context** can be used to continue to flesh out the article. There's no hard best practices for length here, but it probably shouldn't be the bulk of the article.
 
 ## Recommendations
 ### Section-1

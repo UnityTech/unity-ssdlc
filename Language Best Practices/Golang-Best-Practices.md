@@ -1,4 +1,4 @@
-# Golang Security Guidelines [Language Guidance]
+# Golang Security [Language Best Practices]
 <font size="-1">_Author: Andrew Luke - Dec. 2018_</font>
 
 ## Overview

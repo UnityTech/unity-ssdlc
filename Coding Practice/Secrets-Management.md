@@ -39,7 +39,7 @@ A Secret is also anything confidential, sensitive, or Personally Identifiable In
 - Social Security Number
 - Passport Number
 
-#### Guidance on proper handling of secrets
+#### Secrets handling best practices
 
 To handle Secrets properly, we must consider the following:
 - How do applications (non-human) get secrets?
@@ -74,7 +74,7 @@ These are your traditional secrets. Think Username, Password, and/or API Key. Th
 
     vault write secret/stg/ads/ads-performance-valuation/AWS_ACCESS_KEY_ID secret=AKIAIII1337DEADBEEF
 
-_For more Vault guidance, see the linked guidance below, in the Appendix_
+_For more Vault documentaion, see the linked guides below, in the Appendix_
 
 ###### Dynamic Secrets:
 
@@ -87,7 +87,7 @@ If you need support in using or troubleshooting Vault, contact the Security Team
 
 The best practice for application authentication in Google Cloud is to use a Service Account. Rather than store the service account secret in the application source code, use an environment variable pointing to credentials outside of the application’s source code, such as Vault. Restrict who can act as service accounts. Users who are granted the Service Account Actor role for a service account can access all of the resources for which the service account has access.
 
-The Security team is still working to develop more complete guidance on managing GCP secrets; in the meantime, leverage Google’s own document: Understanding Service Accounts. As always, if further guidance is required, ask the Security Team.
+The Security team is still working to develop more complete best practices on managing GCP secrets; in the meantime, leverage Google’s own document: Understanding Service Accounts. As always, if further instruction is required, ask the Security Team.
 
 ##### AWS Keys:
 

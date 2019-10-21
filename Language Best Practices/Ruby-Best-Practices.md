@@ -1,4 +1,4 @@
-# Ruby Security Guidelines [Language Guidance]
+# Ruby Security Guidelines [Language Best Practices]
 
 <font size="-1">_Author: Andrew Luke Dec. 2018_</font
 

@@ -10,7 +10,7 @@ Cryptographic requirements at Unity are heavily influenced by NIST's *Cryptograp
 
 > NOTE: Where possible, we recommend Elliptic Curve Cryptography (ECC / ECDH), with Curve25519 (for signatures and key exchange)
 
-### Usage Guidance
+### Usage Recommendations
 ##### TLS - Cipher Suites
 
 _Minimum TLS version = TLS1.2._
