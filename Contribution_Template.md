@@ -15,7 +15,7 @@ _\<Table of Contents of high-level Sections>_
 ## Recommendations
 ### Section-1
 ###### Description
-_Provide a description of the risk to be mititgated by this best practice._
+_Provide a description of the risk to be mitigated by this best practice._
 ###### Why We Care
 _Explain the actual real world impact of this risk. If possible, provide industry specific relevance._
 ###### How to Fix?
@@ -27,7 +27,7 @@ _Optionally provided a risk severity according to: [Risk-Rating.md](./Security%2
 ---
 ### Section-2
 ###### Description
-_Provide a description of the risk to be mititgated by this best practice._
+_Provide a description of the risk to be mitigated by this best practice._
 ###### Why We Care
 _Explain the actual real world impact of this risk. If possible, provide industry specific relevance._
 ###### How to Fix?

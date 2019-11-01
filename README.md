@@ -1,5 +1,6 @@
 # unity-ssdlc
 <img src="./images/madewith-unity-black.png" style="width:300px" alt="MWU">
+
 ## Intro and Overview
 This is a public version of Unity's internal Secure Software Development Lifecycle (SSDLC). Meant to provide a reusable reference framework, not just to share with others, but also to take contributions to improve and evolve.
 
@@ -38,7 +39,7 @@ To learn how to contribute, take a look at our [Contributing.md](./CONTRIBUTING.
 [`security@unity3d.com`](mailto:security@unity3d.com)
 
 ## License
-License found in:[LICENSE.md](./LICENSE.md)
+License found in: [LICENSE.md](./LICENSE.md)
 
 Copyright © 2019 Unity Technologies
  
