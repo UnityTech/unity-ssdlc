@@ -1,6 +1,6 @@
 # Ruby Security Guidelines [Language Best Practices]
 
-<font size="-1">_Author: Andrew Luke Dec. 2018_</font
+<font size="-1">_Author: Andrew Luke Dec. 2018_</font>
 
 - [Avoid Combing User Input with Dangerous Calls](#)
 - [Use Proper REGEX Start and End of String Symbols](#)

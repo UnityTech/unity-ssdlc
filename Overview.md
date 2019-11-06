@@ -24,7 +24,7 @@ Our SSDLC is currently organized under the following topics:
 - [Security Process](./Security%20Process)
 - [Tools & Automation](./Tools%20and%20Automation)
 
-Also, be sure to keep an eye out for on-site trainings, which will be announced (and archived) here -> [Developer Security Trainings](./Trainings/reaedme.md)
+Also, be sure to keep an eye out for on-site trainings, which will be announced (and archived) here -> [Developer Security Trainings](./Trainings/readme.md)
 
 ## Shortcut List of Articles 
 #### _Coding Practice_
