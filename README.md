@@ -19,7 +19,7 @@ We'd appreciate your feedback as well :)
 ## Unity SSDLC Structure
 Our SSDLC is currently a suite of offerings by the Unity Application Security team. Part documentation, part training (in person and online) and a fun CTF server we host.
 #### SSDLC  Documentation
-The SSDLC is an ever evolving set of documents that our team has drafted as an attempt to capture industry best practices in a single location for our developers. The recommendations aren't perfect, and are always in draft. There are gaps, both in the technology we cover and how deep we are in each topic, however, we felt it better to share with our developers (and you!) as much as we could. Tt does no good for us to hoard a complete library of knowledge because we're missing _just one more article_ :)
+The SSDLC is an ever evolving set of documents that our team has drafted as an attempt to capture industry best practices in a single location for our developers. The recommendations aren't perfect, and are always in draft. There are gaps, both in the technology we cover and how deep we are in each topic, however, we felt it better to share with our developers (and you!) as much as we could. It does no good for us to hoard a complete library of knowledge because we're missing _just one more article_ :)
 
 This SSDLC is intended to be a practical reference for developers to help them design and develop more secure products spread over 3 main topics: [Coding Practice](./Coding%Practice), [Language Best Practices](./Language%Best%Practices), and [Security Process](./Security%20Process). Further, we'll be sharing our [Tools and Automation](./) and [Trainings](./) in the future.
 #### Trainings
@@ -30,7 +30,7 @@ We can't share all our presentations here; we wanted to make these relevant and 
 
 ##### CTF(s)
 _NOTE: Our CTF is not quite ready for public release - We'll have this updated as soon as we can!_
-To go along with our mini-conferences, we also run a small CTF in parallel with presentations. This is meant to give our development teams the opportunity to have a hands-on experience with insecure applications, starting with very simple examples, working up to more advanced challenges. This is not meant to be a full fledged Defcon-style CTF - we just want to teach some security basic, and whet the hacking appetite of our teams.
+To go along with our mini-conferences, we also run a small CTF in parallel with presentations. This is meant to give our development teams the opportunity to have a hands-on experience with insecure applications, starting with very simple examples, working up to more advanced challenges. This is not meant to be a full fledged Defcon-style CTF - we just want to teach some security basics, and whet the hacking appetite of our teams.
 
 ## Contributions
 To learn how to contribute, take a look at our [Contributing.md](./CONTRIBUTING.md). Let us know if you have any questions not called out in there.
