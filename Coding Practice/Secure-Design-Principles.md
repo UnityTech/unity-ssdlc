@@ -16,7 +16,7 @@
 
 Every feature that is added to an application adds an unknown amount of risk to the overall application. The aim for secure development is to reduce the overall risk by reducing the attack surface, by designing features of an application to minimize the attack surface.
 
-Example: A web application implements online help with a search function. The search function may be vulnerable to SQL injection attacks. If the help feature was limited to authorized users, the attack likelihood is reduced. If the help feature’s search function was gated through centralized data validation routines, the ability to perform SQL injection is dramatically reduced. However, if the help feature was re-written to eliminate the search function (through better user interface, for example), this eliminates that attack surface, even if the help feature was available to the Internet at large.
+Example: A web application implements online help with a search function. The search function may be vulnerable to SQL (Standard Query Language) injection attacks. If the help feature was limited to authorized users, the attack likelihood is reduced. If the help feature’s search function was gated through centralized data validation routines, the ability to perform SQL injection is dramatically reduced. However, if the help feature was re-written to eliminate the search function (through better user interface, for example), this eliminates that attack surface, even if the help feature was available to the Internet at large.
 
  
 ### Establish secure defaults
@@ -28,7 +28,7 @@ Example: By default, session timeouts are enabled. Users might be allowed to tur
 
 ### Principle of Least Privilege
 
-The principle of least privilege recommends that accounts have the least amount of privilege required to perform their business processes. This encompasses user rights, resource permissions such as CPU limits, memory, network, and file system permissions.
+The principle of least privilege recommends that accounts have the least amount of privilege required to perform their business processes. This encompasses user rights, resource permissions such as CPU (Central Processing Unit) limits, memory, network, and file system permissions.
 
 Example:  If a middleware server only requires access to the network, read access to a database table, and the ability to write to a log, this describes all the permissions that should be granted. Under no circumstances should the middleware be granted administrative privileges.
 
@@ -37,7 +37,7 @@ Example:  If a middleware server only requires access to the network, read acces
 
 The principle of defense in depth suggests that where one control would be reasonable, more controls that approach risks in different fashions are better. Controls, when used in depth, can make severe vulnerabilities increasingly difficult to exploit, and thus, unlikely to occur.
 
-With secure coding, this may take the form of tier-based validation, centralized auditing controls, and requiring users to be logged on all pages.
+With secure coding, this may take the form of tier-based validation, centralized auditing controls, and requiring users to be logged on for all pages.
 
 Example: A flawed administrative interface is unlikely to be vulnerable to anonymous attack if it correctly gates access to production management networks, checks for administrative user authorization, and logs all access.
 

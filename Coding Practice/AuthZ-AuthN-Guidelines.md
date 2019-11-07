@@ -36,7 +36,7 @@ Medium
 When an OAuth2 client, a scope is defined for the the client. This scope determines which backend APIs are accessible to the client after performing authentication via the auth provider. When setting up a new OAuth2 client, the team requesting the client should identify what APIs/data they need access to, and limit the scope to those specific APIs.
 ###### Why We Care
 
-Limiting the scope of our APIs is a best practice, that can limit the impact of a successful attack. Also, often it is a Unity ID user that is authenticating using the given scope, and with the given access token will give the user direct access to the APIs. Since this is publicly accessible, care should be taken that the user cannot access sensitive APIs, in particular APIs that handle personally identifiable information (PII).
+Limiting the scope of our APIs is a best practice that can limit the impact of a successful attack. Also, often it is a Unity ID user that is authenticating using the given scope, and with the given access token will give the user direct access to the APIs. Since this is publicly accessible, care should be taken that the user cannot access sensitive APIs, in particular, APIs that handle personally identifiable information (PII).
 ###### How to Fix?
 
 During the requirements phase, determine what information is needed for the OAuth2 client, and limit the APIs to only what is necessary. If possible, work with the auth provider to build a custom scope that will limit access to wider APIs. 
@@ -51,10 +51,10 @@ Medium
 ### Limited Token Lifetimes
 ###### Description
 
-When authenticating, a variety of tokens are used to prove the identity of a user. This is typically through a session cookie, or an access token attached to a user’s account. These tokens should have the shortest lifetime that balances the needs to of the users with security. Tokens should not be valid for an infinite amount of time, and should expire within a reasonable timeframe.
+When authenticating, a variety of tokens are used to prove the identity of a user. This is typically through a session cookie, or an access token attached to a user’s account. These tokens should have the shortest lifetime that balances the needs of the users with security. Tokens should not be valid for an infinite length of time, and should expire within a reasonable timeframe.
 ###### Why We Care
 
-This is primarily a defense-in-depth measure, focusing on the case if these tokens are compromised, it will limit the impact of an attack. This also decreases the attack surface of a resulting application, reducing the number of valid tokens at any given time.
+This is primarily a defense-in-depth measure, focusing on limiting the impact of an attack if these tokens are compromised. This also decreases the attack surface of a resulting application, reducing the number of valid tokens at any given time.
 ###### How to Fix?
 
 Check all tokens related to authentication, and review their lifetimes. If you are unsure, contact security for recommendations on their lifetimes. When possible, use the shortest lifetime within a reasonable use.
@@ -99,10 +99,10 @@ High
 ### Validating the OAuth2 State Parameter
 ###### Description
 
-When starting the initial OAuth2 flow, the client has the option of providing a state parameter. This state parameter is then send back with the authorization to be validated by the client later in the flow. This state parameter should be generated upon the initial OAuth2 request, and stored to validate once the authorization from the auth provider has occurred.
+When starting the initial OAuth2 flow, the client has the option of providing a state parameter. This state parameter is then sent back with the authorization to be validated by the client later in the flow. This state parameter should be generated upon the initial OAuth2 request, and stored to validate once the authorization from the auth provider has occurred.
 ###### Why We Care
 
-This is to ensure that the OAuth2 flow is initiated by the user, and is not vulnerable to a potential CSRF. By ensuring that the user has initiated the OAuth2 flow, they will be performing actions within their account with known permissions.
+This is to ensure that the OAuth2 flow is initiated by the user, and is not vulnerable to a potential CSRF (Cross-Site Request Forgery). By ensuring that the user has initiated the OAuth2 flow, they will be performing actions within their account with known permissions.
 ###### How to Fix?
 
 Generate a cryptographically-secure random state parameter when the OAuth2 flow is initialized. The client should validate this when it is returned through the redirect URI callback. The parameter should only be valid for the same OAuth2 flow that initiated it.

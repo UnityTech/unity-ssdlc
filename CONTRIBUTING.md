@@ -11,7 +11,7 @@ Second, before starting on a project that you intend to contribute to the unity-
 #### Basics
 - All contributions will be received as PRs - just read the recommendation below first please! 😁
 - This is intended to be a technical reference for other colleagues in the security community, so the language and style should reflect that.
-- You'll notice that our language if fairly casual for this type of content, but keep the language civil/mild and avoid using too much lingo when writing, and when using an abbreviation, please provide he definition upon its first use. Also refer to our our official [Code of Conduct](./CODE-OF-CONDUCT.md).
+- You'll notice that our language is fairly casual for this type of content, but keep the language civil/mild and avoid using too much lingo when writing, and when using an abbreviation, please provide he definition upon its first use. Also refer to our our official [Code of Conduct](./CODE-OF-CONDUCT.md).
 - Given the nature of this content, it's ultimately meant for developers writing the code, not just security folks looking at it - it's not productive to write an article that not everyone can understand. Keep things simple, but accurate.
 
 #### Article Updates
