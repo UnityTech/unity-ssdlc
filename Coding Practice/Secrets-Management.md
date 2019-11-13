@@ -3,9 +3,9 @@
 
 ## Description
 
-Developing and deploying secure services and applications at Unity requires integration with a number of internal and external systems, such as authentication and cloud storage. Further, much of the software development at Unity requires integration with a growing number of services, requiring developers to handle several secrets, for example: database credentials, api tokens, oauth secrets etc.
+Developing and deploying secure services and applications at Unity requires integration with a number of internal and external systems, such as authentication and cloud storage. Further, much of the software development at Unity requires integration with a growing number of services, requiring developers to handle several secrets, for example: database credentials, api tokens, oauth secrets, etc.
 
-The secrets need to be high-entropy, unique per service, and unique per environment. In many cases this will lead to many secrets for a team to manage, and as such these secrets have frequently been stored checked in as part of configuration files - an insecure practice. Once saved into a configuration file, they are frequently, and accidentally, checked into your favorite version control system on a publicly accessible cloud-hosted repositories, and hence into the hands of attackers. These secrets cannot be stored in such a manner, and need to be kept in an access controlled environment.
+The secrets need to be high-entropy, unique per service, and unique per environment. In many cases this will lead to many secrets for a team to manage, and as such these secrets have frequently been stored checked in as part of configuration files - an insecure practice. Once saved into a configuration file, they are frequently, and accidentally, checked into your favorite version control system on a publicly accessible cloud-hosted repositories, and hence into the hands of attackers. These secrets cannot be stored in such a manner, and need to be kept in an access-controlled environment.
 ### Why We Care
 
 Secrets are secret for a reason, and often provide access to a lot of data, computing resources or privileged accounts. It is therefore crucial that we handle secrets well, ensure we limit their scope and use least privilege, and make the probability of accidental leaks as small as possible. (See Unity's Common Control Framework security controls CCF-4.04 and CCF-4.05)
@@ -58,10 +58,10 @@ Common examples of secret usage are:
 ![Secrets on Fire](../images/secrets%20fire.png)
 
 
-As a rule of thumb, you should use temporary credentials at every opportunity. Not all systems are built in a way that supports this and so using a secrets management tool, like Hashicorp Vault or AWS Secrets Manager, is strongly recommended. Environment variables are passable but not recommended. You should never store secrets in code.
+As a rule of thumb, you should use temporary credentials at every opportunity. Not all systems are built in a way that supports this and so using a secrets management tool, like Hashicorp Vault or AWS (Amazon Web Services) Secrets Manager, is strongly recommended. Environment variables are passable but not recommended. You should never store secrets in code.
 ##### How to protect secrets
 
-After taking the steps above to prepare your application, leverage a secrets management infrastructure to safely store and access your secrets. Cloud options in Google Cloud KMS or Amazon AWS KMS.
+After taking the steps above to prepare your application, leverage a secrets management infrastructure to safely store and access your secrets. Cloud options in Google Cloud KMS (Key Management Service) or Amazon AWS KMS.
 
 The application security team has tools monitoring for secrets in source code repositories, but this mechanism is only supposed to be the last line of defense and to avoid credential leaks it is up to the developer to be diligent when handling these sensitive pieces of data.
 #### Secret Stores
@@ -78,7 +78,7 @@ _For more Vault documentaion, see the linked guides below, in the Appendix_
 
 ###### Dynamic Secrets:
 
-Vault has a variety of Secrets Engines to hook into services like AWS, GCP, SSH, PKI, (and more) to provide temporary credentials which expire on a time-based lease procured by Vault. In the example of the AWS Secrets Engine, Vault acts as an abstraction to an AWS STS call and serves up the resultant Access/Secret Key pair.
+Vault has a variety of Secrets Engines to hook into services like AWS, GCP (Google Cloud Platform), SSH (Secure SHell), PKI (Public Key Infrastructure), (and more) to provide temporary credentials which expire on a time-based lease procured by Vault. In the example of the AWS Secrets Engine, Vault acts as an abstraction to an AWS STS (Security Token Service) call and serves up the resultant Access/Secret Key pair.
 
 For details on dynamic secrets, see Hashicorp’s guidance: [Dynamic Secrets Vault Support](https://learn.hashicorp.com/vault/getting-started/dynamic-secrets)
 
@@ -96,7 +96,7 @@ AWS keys generally come in the following format:
 - `AWS_SECRET_ACCESS_KEY:SYU********************************TIDHF`
 
 
-These keys are generated by AWS IAM or AWS STS.
+These keys are generated by AWS IAM (Identity and Access Management) or AWS STS.
 
 Keys generated by IAM: these keys are assigned to an IAM User (max. 2 keys per user), which may be used by either an individual (human) or a service account (non-human). However, while these keys can be used for service accounts, it is best practice to leverage STS to generate temporary credentials wherever possible for non-human usage.
 

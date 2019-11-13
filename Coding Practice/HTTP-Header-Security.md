@@ -1,7 +1,7 @@
 # HTTP Header Security [Coding Practice]
 <font size="-1">_Author: Christian Håland - Dec. 2018_</font>
 ## Overview
-This document describes the HTTP security headers that we strongly recommend are implemented on all of Unity’s Internet-facing services. https://observatory.mozilla.org can be used to check your site's current headers. The headers are listed in order of importance, but please not that a proper secure Content Security Policy can be difficult to implement unless the application is designed from the beginning with this in mind. 
+This document describes the HTTP security headers that we strongly recommend are implemented on all of Unity’s Internet-facing services. https://observatory.mozilla.org can be used to check your site's current headers. The headers are listed in order of importance, but please note that a proper secure Content Security Policy can be difficult to implement unless the application is designed from the beginning with this in mind. 
 
 Therefore, try to get some quick wins with headers such as: `HTTP Strict Transport Security`, `X-Frame-Options`, `X-XSS-Protection` and `X-Content-Type-Options` first.
 
@@ -31,9 +31,9 @@ Once confident that it's working you should aim for a max-age of minimum 6 month
     
     Strict-Transport-Security: max-age=63072000
 ---
-#### Content-Security-Policy
+#### Content-Security-Policy (CSP)
 
-This header aims to reduce or even eliminate the impact of XSS attacks. It can be used to tell the browser where the website is supposed to load resources from.
+This header aims to reduce or even eliminate the impact of XSS (Cross-Site Scripting) attacks. It can be used to tell the browser where the website is supposed to load resources from.
 
 A nice tool for generating your policy and get an explanation for all the directives can be found here. Note that this site can also serve as a reporting endpoint to test the policy without enforcing it:
 
@@ -96,7 +96,7 @@ X-XSS-Protection sets the configuration for the cross-site scripting filter buil
 ---
 #### X-Content-Type-Options
 
-This header tells the browser not to guess the MIME type of the content served, but instead trust the “Content-Type” header. Without the X-Content-Type-Options header set, some older browsers can incorrectly detect files as scripts and stylesheets, potentially leading to XSS attacks.
+This header tells the browser not to guess the MIME (Multipurpose Internet Mail Extension) type of the content served, but instead trust the “Content-Type” header. Without the X-Content-Type-Options header set, some older browsers can incorrectly detect files as scripts and stylesheets, potentially leading to XSS attacks.
 
 **Recommended setting:**
 
@@ -116,7 +116,7 @@ We may also want to do "Referrer-Policy: strict-origin" to only send the referre
 ---
 #### API
 
-For APIs we want to ensure traffic is encrypted and restrict the potential impact of XSS vulnerabilities e.g. in error pages then they can't be used to run Javascript due to the Content-Security Policy not allowing scripts or iframes. Note that for APIs with documentation on the same domain such as  Swagger, this won't work and would need to be adapted.
+For APIs (Application Programming Interfaces) we want to ensure traffic is encrypted and restrict the potential impact of XSS vulnerabilities e.g. in error pages then they can't be used to run Javascript due to the Content-Security Policy not allowing scripts or iframes. Note that for APIs with documentation on the same domain such as Swagger, this won't work and would need to be adapted.
 
 **Recommended settings:**
 
