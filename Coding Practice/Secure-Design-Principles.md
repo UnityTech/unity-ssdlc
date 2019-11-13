@@ -28,7 +28,7 @@ Example: By default, session timeouts are enabled. Users might be allowed to tur
 
 ### Principle of Least Privilege
 
-The principle of least privilege recommends that accounts have the least amount of privilege required to perform their business processes. This encompasses user rights, resource permissions such as CPU (Central Processing Unit) limits, memory, network, and file system permissions.
+The principle of least privilege recommends that accounts have the least amount of privilege required to perform their business processes. This encompasses user rights, resource permissions such as CPU limits, memory, network, and file system permissions.
 
 Example:  If a middleware server only requires access to the network, read access to a database table, and the ability to write to a log, this describes all the permissions that should be granted. Under no circumstances should the middleware be granted administrative privileges.
 
