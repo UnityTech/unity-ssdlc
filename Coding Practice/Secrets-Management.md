@@ -3,15 +3,9 @@
 
 ## Description
 
-<<<<<<< HEAD
-Developing and deploying secure services and applications at Unity requires integration with a number of internal and external systems, such as authentication and cloud storage. Further, much of the software development at Unity requires integration with a growing number of services, requiring developers to handle several secrets, for example: database credentials, api tokens, oauth secrets etc.
-
-The secrets need to be high-entropy, unique per service, and unique per environment. In many cases this will lead to many secrets for a team to manage, and as such these secrets have frequently been stored checked in as part of configuration files - an insecure practice. Once saved into a configuration file, they are frequently, and accidentally, checked into your favorite version control system on a publicly accessible cloud-hosted repositories, and hence into the hands of attackers. These secrets cannot be stored in such a manner, and need to be kept in an access controlled environment.
-=======
 Developing and deploying secure services and applications at Unity requires integration with a number of internal and external systems, such as authentication and cloud storage. Further, much of the software development at Unity requires integration with a growing number of services, requiring developers to handle several secrets, for example: database credentials, api tokens, oauth secrets, etc.
 
 The secrets need to be high-entropy, unique per service, and unique per environment. In many cases this will lead to many secrets for a team to manage, and as such these secrets have frequently been stored checked in as part of configuration files - an insecure practice. Once saved into a configuration file, they are frequently, and accidentally, checked into your favorite version control system on a publicly accessible cloud-hosted repositories, and hence into the hands of attackers. These secrets cannot be stored in such a manner, and need to be kept in an access-controlled environment.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ### Why We Care
 
 Secrets are secret for a reason, and often provide access to a lot of data, computing resources or privileged accounts. It is therefore crucial that we handle secrets well, ensure we limit their scope and use least privilege, and make the probability of accidental leaks as small as possible. (See Unity's Common Control Framework security controls CCF-4.04 and CCF-4.05)
@@ -19,11 +13,7 @@ Secrets are secret for a reason, and often provide access to a lot of data, comp
 
 Credential leaks to Github are a common, and troublesome issue within the industry. This can give malicious actors access to internal systems, data, apis and more. There are also other examples, such as accidentally hosting script files that contain credentials on a public web server.
 
-<<<<<<< HEAD
-It should go without saying, but when your credentials fall into someone else’s hands they can assume any of your privileges. A common example we see is someone granting themselves “Admin” so they do not have to concern themselves with identifying precisely the minimum privileges needed. They may only use these credentials for a small handful of API calls but when these credentials are exposed, a malicious actor can do anything “Admin” can do. These credentials are often exploited for launching cryptominers, ransomware attacks, or setting up backdoors for later use.
-=======
 It should go without saying, but when your credentials fall into someone-else's hands they can assume any of your privileges. A common example we see is someone granting themselves “Admin” so they do not have to concern themselves with identifying precisely the minimum privileges needed. They may only use these credentials for a small handful of API calls but when these credentials are exposed, a malicious actor can do anything “Admin” can do. These credentials are often exploited for launching cryptominers, ransomware attacks, or setting up backdoors for later use.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 This is not limited to the example of “Admin” by any means. For example, compromising a user grants access to all groups the user may be a member of. These groups have the potential to span teams, projects, accounts, and more. This is commonly seen when a developer uses their own LDAP/Google credentials to test out a prototype of what their working on, only to later check-in that code to save their progress. It’s a bad habit to get into, despite the convenience it offers.
 **To summarize, TL;DR - Commonly found secrets in code (unencrypted):**
@@ -68,17 +58,10 @@ Common examples of secret usage are:
 ![Secrets on Fire](../images/secrets%20fire.png)
 
 
-<<<<<<< HEAD
-As a rule of thumb, you should use temporary credentials at every opportunity. Not all systems are built in a way that supports this and so using a secrets management tool, like Hashicorp Vault or AWS Secrets Manager, is strongly recommended. Environment variables are passable but not recommended. You should never store secrets in code.
-##### How to protect secrets
-
-After taking the steps above to prepare your application, leverage a secrets management infrastructure to safely store and access your secrets. Cloud options in Google Cloud KMS or Amazon AWS KMS.
-=======
 As a rule of thumb, you should use temporary credentials at every opportunity. Not all systems are built in a way that supports this and so using a secrets management tool, like Hashicorp Vault or AWS (Amazon Web Services) Secrets Manager, is strongly recommended. Environment variables are passable but not recommended. You should never store secrets in code.
 ##### How to protect secrets
 
 After taking the steps above to prepare your application, leverage a secrets management infrastructure to safely store and access your secrets. Cloud options in Google Cloud KMS (Key Management Service) or Amazon AWS KMS.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 The application security team has tools monitoring for secrets in source code repositories, but this mechanism is only supposed to be the last line of defense and to avoid credential leaks it is up to the developer to be diligent when handling these sensitive pieces of data.
 #### Secret Stores
@@ -89,21 +72,13 @@ Vault supports a couple of options for secrets storage - Static and Dynamic. If 
 
 These are your traditional secrets. Think Username, Password, and/or API Key. These can be stored via the Vault command-line tools, for example:
 
-<<<<<<< HEAD
-    vault write secret/stg/ads/ads-performance-valuation/AWS_ACCESS_KEY_ID secret=AKIAIII1337DEADBEEF
-=======
     vault write secret/stg/ads/ads-performance-valuation/AWS_ACCESS_KEY_ID secret=AKIASUP3R1337DEADBEEF
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 _For more Vault documentaion, see the linked guides below, in the Appendix_
 
 ###### Dynamic Secrets:
 
-<<<<<<< HEAD
-Vault has a variety of Secrets Engines to hook into services like AWS, GCP, SSH, PKI, (and more) to provide temporary credentials which expire on a time-based lease procured by Vault. In the example of the AWS Secrets Engine, Vault acts as an abstraction to an AWS STS call and serves up the resultant Access/Secret Key pair.
-=======
 Vault has a variety of Secrets Engines to hook into services like AWS, GCP (Google Cloud Platform), SSH (Secure SHell), PKI (Public Key Infrastructure), (and more) to provide temporary credentials which expire on a time-based lease procured by Vault. In the example of the AWS Secrets Engine, Vault acts as an abstraction to an AWS STS (Security Token Service) call and serves up the resultant Access/Secret Key pair.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 For details on dynamic secrets, see Hashicorp’s guidance: [Dynamic Secrets Vault Support](https://learn.hashicorp.com/vault/getting-started/dynamic-secrets)
 
@@ -117,38 +92,15 @@ The Security team is still working to develop more complete best practices on ma
 ##### AWS Keys:
 
 AWS keys generally come in the following format:
-<<<<<<< HEAD
-
-    AWS_ACCESS_KEY_ID:AKIA***********VT43D
-
-    AWS_SECRET_ACCESS_KEY:SYU********************************TUFYIG
-
-
-These keys are generated by AWS IAM or AWS STS.
-=======
 - `AWS_ACCESS_KEY_ID:AKIA***********VT43D`
 - `AWS_SECRET_ACCESS_KEY:SYU********************************TIDHF`
 
 
 These keys are generated by AWS IAM (Identity and Access Management) or AWS STS.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 Keys generated by IAM: these keys are assigned to an IAM User (max. 2 keys per user), which may be used by either an individual (human) or a service account (non-human). However, while these keys can be used for service accounts, it is best practice to leverage STS to generate temporary credentials wherever possible for non-human usage.
 
 Keys generated by STS: these keys are temporary and expire by default in 12 hours (min. 15mins, max. 36hrs). It is recommended to generate these keys with the minimum duration necessary. These keys are best practice as compromised keys quickly become useless to a malicious actor. STS also solves the problems presented by Creds in Source Code. Often times developers will use their personal Access Key/Secret Key pairs which can cause unexpected outages when someone leaves the company and their accounts are terminated; STS avoids this as well.
-<<<<<<< HEAD
-
-    import boto3
-
-    `# Create a session with attached role`
-    session = boto3.Session()    
-
-    `# Create an sts client with the session`
-    sts = session.client("sts")    
-
-    `# Get temporary credentials for the current session`
-    temporary_creds = sts.get_session_token()['Credentials']
-=======
 ```python
     import boto3
 
@@ -161,7 +113,6 @@ Keys generated by STS: these keys are temporary and expire by default in 12 hour
     # Get temporary credentials for the current session
     temporary_creds = sts.get_session_token()['Credentials']
 ```
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 
 

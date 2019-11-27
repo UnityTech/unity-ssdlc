@@ -17,11 +17,7 @@ This document covers general security guidelines for API endpoints within Unity.
 API endpoints should follow the principle of least privilege. Services with protected information should serve to the smallest group possible.
 ###### Why We Care
 
-<<<<<<< HEAD
-APIs with misconfigured access controls can lead to unintentional information leaks, or unauthorized and malicious state changing actions on sensitive data.
-=======
 APIs with misconfigured access controls can lead to unintentional information leaks, or unauthorized and malicious state-changing actions on sensitive data.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### Example of Issue (Optional)
 
 A POST that allows the user to modify information on an account without checking if the user owns the account being modified.
@@ -52,11 +48,7 @@ Incorrect access controls can range from High to Low Severity.
 Incoming data can be malformed or crafted to cause unintended behavior when it is parsed.
 ###### Why We Care
 
-<<<<<<< HEAD
-Depending on how input is parsed, it is possible unvalidated input can contain command injections, or other harmful actions.
-=======
 Depending on how input is parsed, it is possible for unvalidated input to contain command injections, or other harmful actions.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### Example of Issue (Optional)
 *TBD*
 
@@ -73,13 +65,7 @@ Restrict http methods
 Parsing - Third party parsers should be kept up to date, changes to internal parsers should be carefully reviewed.
 ###### Risk Rating
 
-<<<<<<< HEAD
-Input Validation issues could range from Low to High depending on what how the error can be leveraged.
-###### References (Optional)
-*TBD - List external references for more detailed guidance*
-=======
 Input Validation issues could range from Low to High depending on how the error can be leveraged.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 ---
 ### Request Integrity
@@ -98,11 +84,7 @@ An attacker sends a previous, genuine request to cause an action to happen again
 Modified requests in-transit: An attacker modifies data in the genuine request as it is sent.
 ###### How to Fix?
 
-<<<<<<< HEAD
-Generate signatures or HMACs for each request containing sensitive data or actions. Check the signature of the request to determine if it is genuine. Sign requests that include timestamps, and deny all requests that are relatively too old.
-=======
 Generate signatures or HMACs (Hashed Message Authentication Codes) for each request containing sensitive data or actions. Check the signature of the request to determine if it is genuine. Sign requests that include timestamps, and deny all requests that are relatively too old.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### Risk Rating
 
 Depending on what actions the request can take, severity could range from High to Low.
@@ -126,19 +108,9 @@ Returning stack traces or other descriptive information of the service backend
 
 Log and monitor API activity. Detecting anomalies can assist in finding malicious activity that isn’t apparent anywhere else.
 
-<<<<<<< HEAD
-Disable CORS if not needed, or scope it down as small as possible to prevent forged requests or data leakage.
-=======
 Disable CORS (Cross-Origin Resource Sharing) if not needed, or scope it down as small as possible to prevent forged requests or data leakage.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 Return vague error responses. Put as little information as possible when returning an error to the user. Do not return any information about the server environment or debug information like stack traces.
 ###### Risk Rating
 
 Ranging from Low to High depending on context.
-<<<<<<< HEAD
-###### References (Optional)
-
-*TBD - List external references for more detailed guidance*
-=======
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1

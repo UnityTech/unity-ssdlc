@@ -2,11 +2,7 @@
 <font size="-1">_Author: Carlo Valentin - Dec. 2018_</font>
 
 - [Minimize attack surface area](#minimize-attack-surface-area)
-<<<<<<< HEAD
-- [Establist secure defaults](#establish-secure-defaults)
-=======
 - [Establish secure defaults](#establish-secure-defaults)
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 - [Principle of least privilege](#principle-or-least-privilege)
 - [Principle of Defense in Depth](#principle-of-defense-in-depth)
 - [Fail securely](#fail-securely)
@@ -20,11 +16,7 @@
 
 Every feature that is added to an application adds an unknown amount of risk to the overall application. The aim for secure development is to reduce the overall risk by reducing the attack surface, by designing features of an application to minimize the attack surface.
 
-<<<<<<< HEAD
-Example: A web application implements online help with a search function. The search function may be vulnerable to SQL injection attacks. If the help feature was limited to authorized users, the attack likelihood is reduced. If the help feature’s search function was gated through centralized data validation routines, the ability to perform SQL injection is dramatically reduced. However, if the help feature was re-written to eliminate the search function (through better user interface, for example), this eliminates that attack surface, even if the help feature was available to the Internet at large.
-=======
 Example: A web application implements online help with a search function. The search function may be vulnerable to SQL (Standard Query Language) injection attacks. If the help feature was limited to authorized users, the attack likelihood is reduced. If the help feature’s search function was gated through centralized data validation routines, the ability to perform SQL injection is dramatically reduced. However, if the help feature was re-written to eliminate the search function (through better user interface, for example), this eliminates that attack surface, even if the help feature was available to the Internet at large.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
  
 ### Establish secure defaults
@@ -45,11 +37,7 @@ Example:  If a middleware server only requires access to the network, read acces
 
 The principle of defense in depth suggests that where one control would be reasonable, more controls that approach risks in different fashions are better. Controls, when used in depth, can make severe vulnerabilities increasingly difficult to exploit, and thus, unlikely to occur.
 
-<<<<<<< HEAD
-With secure coding, this may take the form of tier-based validation, centralized auditing controls, and requiring users to be logged on all pages.
-=======
 With secure coding, this may take the form of tier-based validation, centralized auditing controls, and requiring users to be logged on for all pages.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 Example: A flawed administrative interface is unlikely to be vulnerable to anonymous attack if it correctly gates access to production management networks, checks for administrative user authorization, and logs all access.
 
@@ -59,11 +47,7 @@ Example: A flawed administrative interface is unlikely to be vulnerable to anony
 Applications regularly fail to process transactions for many reasons. How they fail can determine if an application is secure or not. For example:
 
 Incorrect sample:
-<<<<<<< HEAD
-
-=======
 ```javascript
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
     isAdmin = true;
     try {
     codeWhichMayFail();
@@ -72,15 +56,9 @@ Incorrect sample:
     catch (Exception ex) {
     log.write(ex.toString());
     }
-<<<<<<< HEAD
-
- 
-
-=======
 ```
  
 ```javascript
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 Correct sample:
 
     isAdmin = false;
@@ -91,13 +69,8 @@ Correct sample:
     catch (Exception ex) {
     log.write(ex.toString());
     }
-<<<<<<< HEAD
-
-If either codeWhichMayFail() or isUserInRole fails or throws an exception, the user is an admin by default. This is obviously a security risk.
-=======
 ```
 If either `codeWhichMayFail()` or `isUserInRole` fails or throws an exception, the user is an admin by default. This is obviously a security risk.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 
 ### Don’t trust services and validate externally sourced data

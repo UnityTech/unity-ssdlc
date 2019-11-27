@@ -1,10 +1,6 @@
 # Ruby Security Guidelines [Language Best Practices]
 
-<<<<<<< HEAD
-<font size="-1">_Author: Andrew Luke Dec. 2018_</font
-=======
 <font size="-1">_Author: Andrew Luke Dec. 2018_</font>
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 - [Avoid Combing User Input with Dangerous Calls](#)
 - [Use Proper REGEX Start and End of String Symbols](#)
@@ -97,22 +93,6 @@ When using REGEX to validate user input, misuse of these symbols can introduce t
 ###### Example of Issue
 
 The following REGEX filter is meant to accept only valid URLs
-<<<<<<< HEAD
-
-    /^https?:\/\/[^\n]+$/i
-
-
-Due to the ^ symbol use instead the \A symbol, the following submission would pass the filter because each line is processed separately and the second line matches:
-
-    
-
-    javascript:exploit_code();/*
-
-    http://hi.com
-
-    */
-
-=======
 ```regex
     /^https?:\/\/[^\n]+$/i
 ```
@@ -125,7 +105,6 @@ Due to the ^ symbol use instead the \A symbol, the following submission would pa
 
     */
 ```
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
  
 ###### How to fix?
 
@@ -146,11 +125,7 @@ High
 ###### Description
 
 By default, Rails 3.0 and up protects against cross-site scripting (XSS) through the output encoding of data placed into views. However, there are several ways in Ruby on Rails for developers to bypass the default XSS protections. These are the dangerous template tags which bypass default output encoding:
-<<<<<<< HEAD
-
-=======
 ```ruby
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
     <%= raw @product.name %>
 
     <%= @product.name.html_safe %>
@@ -160,17 +135,10 @@ By default, Rails 3.0 and up protects against cross-site scripting (XSS) through
     <%= link_to “Personal Website”, @user.website %>
 
         Here, the @user.website value could begin with javascript: tag, executing any JavaScript payload that follows it.
-<<<<<<< HEAD
-
-###### Why We Care
-
-XSS can be used to perform any action the authenticated user has access, including other Unity services if authentication is handled through Genesis.
-=======
 ```
 ###### Why We Care
 
 XSS can be used to perform any action the authenticated user has access, including other services if authentication is handled through the same auth provider.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### How to fix?
 
 These methods of printing raw HTML to the page should only be used for trusting, non-user generated content that doesn’t include user input. If users are able to influence the data used with these bypasses, it becomes vulnerable to XSS.
@@ -194,32 +162,19 @@ To prevent this, Strong Parameters should be used globally to enforce whitelisti
 An alternative for older versions of Rails is to blacklist specific model attributes using the attr_protected method or whitelist specific model attributes using the attr_accessible method when defining your models. If you are working in Rails < 3.2.3 you must enable attribute whitelisting with the following:
 
  
-<<<<<<< HEAD
-
-    config.active_record.whitelist_attributes = true
-=======
 ```ruby
 config.active_record.whitelist_attributes = true
 ```
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 
 Whitelist example that allows access by role:
 
     
-<<<<<<< HEAD
-
-    attr_accessible :name
-
-    attr_accessible :name, :is_admin, :as => :admin
-
-=======
 ```ruby
     attr_accessible :name
 
     attr_accessible :name, :is_admin, :as => :admin
 ```
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
  
 ###### Why We Care
 
@@ -229,20 +184,12 @@ Interactions with datastores are typically one of the most sensitive areas in a 
 The following function mass assigns user input when creating a new user.
 
  
-<<<<<<< HEAD
-
-=======
 ```ruby 
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
     def signup
         params[:user]
         @user = User.new(params[:user])
     end
-<<<<<<< HEAD
-
-=======
 ```
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
  
 
 
@@ -281,15 +228,10 @@ Strong encryption of traffic between the user and the web server plays a key par
 In Rails 3.1 and later, this can be accomplished by always forcing SSL connections in your application config file:
 
  
-<<<<<<< HEAD
-
-    config.force_ssl = true
-=======
 ```ruby
     config.force_ssl = true
 ```
 
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### Risk Rating
 
 Medium
@@ -307,15 +249,9 @@ Logging of sensitive, user information puts that data at higher risk of compromi
 When designing a Rail application, make sure to designate request parameters that should not be logged. These should be appended to the list of filtered parameters in the Rails configuration:
 
  
-<<<<<<< HEAD
-
-    config.filter_parameters << :cc_number
-
-=======
 ```ruby
     config.filter_parameters << :cc_number
 ```
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
  
 ###### Risk Rating
 
@@ -376,11 +312,7 @@ Avoiding using user input to choose which view to render when certain views are 
 Low
  
  ---
-<<<<<<< HEAD
-####Session Fixation
-=======
 #### Session Fixation
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### Description
 
 Session fixation is the term for when a pre-authentication session token used as the post-authentication session token. In other words, the a new session token is not set after authenticating. This is not an issue if header-based authentication is in use.

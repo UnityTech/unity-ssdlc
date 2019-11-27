@@ -20,11 +20,7 @@ This guide will provide general best practices for developing more secure code i
 
 Generally the most dangerous part of any software is the point where it will process untrusted external data. As such, it is one of the most important areas to ensure attention is given.
 ###### Example of Issue
-<<<<<<< HEAD
-
-=======
 ```javascript
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
     function buildList (var untrustedListSize){
         if ( 0 > untrustedListSize ){
             new Error("Negative value supplied for list size, die evil hacker!");
@@ -33,22 +29,14 @@ Generally the most dangerous part of any software is the point where it will pro
         var list = new Widget [ untrustedListSize ];
         list[0] = new Widget();
     }
-<<<<<<< HEAD
-
-=======
 ```
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 <sub>_(Adapted from: https://cwe.mitre.org/data/definitions/20.html)_</sub>
 
 ###### How to Fix?
 
 There are several validation libraries. The AppSec team hasn’t investigated and compared validation packages out there, though express-validator.js seems like a popular option among the Node.js community.
 
-<<<<<<< HEAD
-Mozilla has a decent article covering some basic of using that pacakge: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms  
-=======
 Mozilla has a decent article covering some basic of using that package: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms  
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### Risk Rating
 
 While lack of validation can present a significant risk, it requires the underlying area of code to be vulnerable to exploitation, as such, this is considered a Low severity issue.
@@ -96,13 +84,9 @@ Use of the eval() function is incredibly dangerous, and rarely actually needed. 
 eval(< anything in here> ) :D
 ###### How to Fix?
 
-<<<<<<< HEAD
-Generally, it's completely unsafe to execute untrusted code, and as such, should be avoid entirely. Any case of such use to be considered very seriously; if it's determined to be requisite, consider using the native VM module, which exposes Node.js' V8 engine for safer code execution
-=======
 Generally, it's completely unsafe to execute untrusted code, and as such, should be avoid entirely. Any case of such use to be considered very seriously.
 
 If running untrusted script determined to be requisite, work with the product security team to determined the best method to isolate this code. In some cases, using the native VM module, which exposes Node.js' V8 engine is acceptable, in other cases, more robust isolation may be required.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### Risk Rating
 
 Low - High
@@ -162,11 +146,7 @@ Medium
 Not a risk in itself, but the audit option of npm is a recently added feature to automatically scan installed packages for you project, with severity ratings and links to the details on the scanned risks. It’s recommended that this is run regularly against all projects, to help identify vulnerabilities that may exist in dependencies.
 ###### Why We Care
 
-<<<<<<< HEAD
-Packages are 3rd party code, that we often use without fully auditing. Until Unity has the resource to provide better auditing of packages, this is a great tool available for us to use.
-=======
 Unpatched npm packages can easily be exploited as the vulnerabilities are made public once patched.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### Example of Issue
 
 Here’s an example output:

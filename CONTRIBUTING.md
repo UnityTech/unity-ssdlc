@@ -10,13 +10,8 @@ Second, before starting on a project that you intend to contribute to the unity-
 ### Document Style
 #### Basics
 - All contributions will be received as PRs - just read the recommendation below first please! 😁
-<<<<<<< HEAD
-- This is intended to be a technical reference for other collegeaues in the security community, so the language and style should reflect that.
-- You'll notice that our language if fairly casual for this type of content, but keep the language civil/mild and avoid using too much lingo when writing, and when using an abbreviation, please provide he definition upon its first use. Also refer to our our official [Code of Conduct](./CODE-OF-CONDUCT.md).
-=======
 - This is intended to be a technical reference for other colleagues in the security community, so the language and style should reflect that.
 - You'll notice that our language is fairly casual for this type of content, but keep the language civil/mild and avoid using too much lingo when writing, and when using an abbreviation, please provide he definition upon its first use. Also refer to our our official [Code of Conduct](./CODE-OF-CONDUCT.md).
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 - Given the nature of this content, it's ultimately meant for developers writing the code, not just security folks looking at it - it's not productive to write an article that not everyone can understand. Keep things simple, but accurate.
 
 #### Article Updates
@@ -24,30 +19,18 @@ Second, before starting on a project that you intend to contribute to the unity-
 Simply update the spelling of the article and do a PR. For simple changes like this, we won't be updating the Authorship or contributor section in the article itself, but your PR will be in the changelog.
 
 ##### New Content and Substantial Changes
-<<<<<<< HEAD
-If you want to contribute new security recommendations or research to an additional article, provide the PR ensuring that you're maintaning the original articles style and template as closely as reasonable.
-=======
 If you want to contribute new security recommendations or research to an additional article, provide the PR ensuring that you're maintaining the original articles style and template as closely as reasonable.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 If mutliple people contributed to the content, please include their names in the *Contributors* section at the end of the article. 
 
 #### New Articles and the Template
 If creating a new article, we'd recommend taking a look at the [Contribution_Template](./Contribution_Template.md) that we have to help improve consistency in the article formatting. 
-<<<<<<< HEAD
-We're open to article in differing format, but variance from the template will necessicate a review of the articles layout to ensure it's readable and logical.
-=======
 We're open to article in differing format, but variance from the template will necessitate a review of the articles layout to ensure it's readable and logical.
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 For new articles, please ensure everyone who has substantially contributed to the article is appropriately credited as an author.
 
 ### Attribution and Credit
-<<<<<<< HEAD
-An importact aspect of this body of work is that contributors are recognized for their work. As such, authors and contributors will be recognized in the content of the Markdown file, not just by their names in the Git changelogs. Above this is discused a bit, but we'll repeat it here for clarity:
-=======
 An important aspect of this body of work is that contributors are recognized for their work. As such, authors and contributors will be recognized in the content of the Markdown file, not just by their names in the Git changelogs. Above this is discussed a bit, but we'll repeat it here for clarity:
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 - Authors: Original Authors of an article will be given credit at the top of the article. This will include the month and year the content was originally written.
 - Contributors: People who have provided new research or recommendations to an article will be added as a Contributor in the appropriate section at the bottom of the page, along with the month and year their contribution was made.
 - Minor changes: Minor changes (spelling, grammar, etc.), will be accepted directly as PRs, with the contributors account logged in the changelog for that PR.
@@ -66,8 +49,4 @@ We'd love to see industry specific versions, or flavors, of this SSDLC being dev
 ---
 
 
-<<<<<<< HEAD
 ## All contributions are governed by the [Apache 2.0 license](./LICENSE.md).
-=======
-## All contributions are governed by the [Apache 2.0 license](./LICENSE.md).
->>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
