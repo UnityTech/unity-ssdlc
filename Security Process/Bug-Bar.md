@@ -107,42 +107,43 @@ The bar allows us to triage security bugs to ensure those that are most severe w
 High and above will require a patch gets created and released for our customers. If at all possible we should work on getting these fixes in with patches that are already going out. Lows will be filed and the team owning the feature can address it as a normal bug.
 
 ##### What are some examples of the table above applied to actual attack types?
-The below table has many examples of common attacks and how they would land on the bug bar described above:
-|          |                                                             |                                              |                |                    | 
-|----------|-------------------------------------------------------------|----------------------------------------------|----------------|--------------------| 
-| Severity | Finding                                                     | Category                                     | Finding Impact | Finding Likelihood | 
-| Critical | Internet Accessible Remote Code Execution                   | Remote Code Execution (RCE)                  | High           | High               | 
-|          | Stored Cross Site Scripting on unity.com                    | Cross-Site Scripting (XSS)                   | High           | High               | 
-|          | Administrative Privilege Escalation                         | Broken Access Control/Authorization (BAC)    | High           | High               | 
-|          | Authentication Bypass  w/ Access to User Data               | Broken Authentication and Session Management | High           | High               | 
-|          |                                                             |                                              |                |                    | 
-| High     | Remote Code Execution on an isolated instance               | Remote Code Execution (RCE)                  | Medium         | High               | 
-|          | Partial Privilege Escalation                                | Broken Access Control/Authorization (BAC)    | Medium         | High               | 
-|          | Production Secrets in Code Repository                       | Sensitive Data Exposure                      | High           | Medium             | 
-|          | Server-side Request Forgery w/ accessible internal services | Server-Side Injection                        | High           | Medium             | 
-|          | Cross site request forgery for sensitive data               | Cross-Site Request Forgery (CSRF)            | Medium         | High               | 
-|          | Access Token Leak resulting in full account compromise      | Sensitive Data Exposure                      | High           | Medium             | 
-|          | Reflected Cross-Site Scripting                              | Cross-Site Scripting (XSS)                   | Medium         | High               | 
-|          | Persistent remote denial of service                         | Denial-of-Service (DoS)                      | High           | Medium             | 
-|          | No TLS/HTTPS/Transport Encryption on sensitive service      | Insecure Data Transport                      | High           | Medium             | 
-|          |                                                             |                                              |                |                    | 
-| Medium   | Cross site request forgery for non-sensitive data           | Cross-Site Request Forgery (CSRF)            | Medium         | Medium             | 
-|          | Server-side Request Forgery (Info Disclosure)               | Server-Side Injection                        | Medium         | Medium             | 
-|          | Session Fixation                                            | Broken Authentication and Session Management | Medium         | Medium             | 
-|          | Access Token Leak w/ Limited Scope                          | Sensitive Data Exposure                      | Low            | High               | 
-|          | Multi-factor authentication bypass                          | Broken Authentication and Session Management | High           | Low                | 
-|          | Multi-packet Denial of Service                              | Denial-of-Service (DoS)                      | Medium         | Medium             | 
-|          | No TLS/HTTPS/Transport Encryption on non-sensitive service  | Insecure Data Transport                      | Medium         | Medium             | 
-|          | Insecure Cryptographic Options                              | Broken Cryptography                          | High           | Low                | 
-|          | Publicly Accessible Google Groups                           | Insufficient Security Configurability        | Medium         | Medium             | 
-|          | Cookie Flags                                                | Server Security Misconfiguration             | Low            | High               | 
-|          |                                                             |                                              |                |                    | 
-| Low      | Clickjacking                                                | Server Security Misconfiguration             | Low            | Medium             | 
-|          | Open Redirect                                               | Unvalidated Redirects and Forwards           | Low            | Medium             | 
-|          | Multi-packet DoS                                            | Denial-of-Service (DoS)                      | Low            | Medium             | 
-|          | Leaked HTTP Headers                                         | Server Security Misconfiguration             | Low            | Medium             | 
-|          | Information Disclosure                                      | Sensitive Data Exposure                      | Low            | Medium             | 
-|          | Open CORS Policy                                            | Server Security Misconfiguration             | Low            | Medium             | 
-|          | Tabnabbing                                                  | Unvalidated Redirects and Forwards           | Low            | Low                | 
+
+<table>
+<tr><td>Severity</td><td>Finding</td><td>Category</td><td>Finding Impact</td><td>Finding Likelihood</td></tr>
+<tr><td rowspan="4">Critical</td><td>Internet Accessible Remote Code Execution</td><td>Remote Code Execution (RCE)</td><td>High</td><td>High</td></tr>
+<tr><td>Stored Cross Site Scripting on unity.com</td><td>Cross-Site Scripting (XSS)</td><td>High</td><td>High</td></tr>
+<tr><td>Administrative Privilege Escalation</td><td>Broken Access Control/Authorization (BAC)</td><td>High</td><td>High</td></tr>
+<tr><td>Authentication Bypass w/ Access to User Data</td><td>Broken Authentication and Session Management</td><td>High</td><td>High</td></tr>
+<tr><td colspan="5"><td></tr>
+
+<tr><td rowspan="9">High</td><td>Remote Code Execution on an isolated instance</td><td>Remote Code Execution (RCE)</td><td>Medium</td><td>High</td></tr>
+<tr><td>Partial Privilege Escalation</td><td>Broken Access Control/Authorization (BAC)</td><td>Medium</td><td>High</td></tr>
+<tr><td>Production Secrets in Code Repository</td><td>Sensitive Data Exposure</td><td>High</td><td>Medium</td></tr>
+<tr><td>Server-side Request Forgery w/ accessible internal services</td><td>Server-Side Injection</td><td>High</td><td>Medium</td></tr>
+<tr><td>Cross site request forgery for sensitive data</td><td>Cross-Site Request Forgery (CSRF)</td><td>Medium</td><td>High</td></tr>
+<tr><td>Access Token Leak resulting in full account compromise</td><td>Sensitive Data Exposure</td><td>High</td><td>Medium</td></tr>
+<tr><td>Reflected Cross-Site Scripting</td><td>Cross-Site Scripting (XSS)</td><td>Medium</td><td>High</td></tr>
+<tr><td>Persistent remote denial of service</td><td>Denial-of-Service (DoS)</td><td>High</td><td>Medium</td></tr>
+<tr><td>No TLS/HTTPS/Transport Encryption on sensitive service</td><td>Insecure Data Transport</td><td>High</td><td>Medium</td></tr>
+<tr><td colspan="5"><td></tr>
+<tr><td rowspan="10">Medium</td><td>Cross site request forgery for non-sensitive data</td><td>Cross-Site Request Forgery (CSRF)</td><td>Medium</td><td>Medium</td></tr>
+<tr><td>Server-side Request Forgery (Info Disclosure)</td><td>Server-Side Injection</td><td>Medium</td><td>Medium</td></tr>
+<tr><td>Session Fixation</td><td>Broken Authentication and Session Management</td><td>Medium</td><td>Medium</td></tr>
+<tr><td>Access Token Leak w/ Limited Scope</td><td>Sensitive Data Exposure</td><td>Low</td><td>High</td></tr>
+<tr><td>Multi-factor authentication bypass</td><td>Broken Authentication and Session Management</td><td>High</td><td>Low</td></tr>
+<tr><td>Multi-packet Denial of Service</td><td>Denial-of-Service (DoS)</td><td>Medium</td><td>Medium</td></tr>
+<tr><td>No TLS/HTTPS/Transport Encryption on non-sensitive service</td><td>Insecure Data Transport</td><td>Medium</td><td>Medium</td></tr>
+<tr><td>Insecure Cryptographic Options</td><td>Broken Cryptography</td><td>High</td><td>Low</td></tr>
+<tr><td>Publicly Accessible Google Groups</td><td>Insufficient Security Configurability</td><td>Medium</td><td>Medium</td></tr>
+<tr><td>Cookie Flags</td><td>Server Security Misconfiguration</td><td>Low</td><td>High</td></tr>
+<tr><td colspan="5"><td></tr>
+<tr><td rowspan="7">Low</td><td>Clickjacking</td><td>Server Security Misconfiguration</td><td>Low</td><td>Medium</td></tr>
+<tr><td>Open Redirect</td><td>Unvalidated Redirects and Forwards</td><td>Low</td><td>Medium</td></tr>
+<tr><td>Multi-packet DoS</td><td>Denial-of-Service (DoS)</td><td>Low</td><td>Medium</td></tr>
+<tr><td>Leaked HTTP Headers</td><td>Server Security Misconfiguration</td><td>Low</td><td>Medium</td></tr>
+<tr><td>Information Disclosure</td><td>Sensitive Data Exposure</td><td>Low</td><td>Medium</td></tr>
+<tr><td>Open CORS Policy</td><td>Server Security Misconfiguration</td><td>Low</td><td>Medium</td></tr>
+<tr><td>Tabnabbing</td><td>Unvalidated Redirects and Forwards</td><td>Low</td><td>Low</td></tr>
+<table>
 
 
