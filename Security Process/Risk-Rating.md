@@ -1,5 +1,9 @@
 # Risk Rating (aka., Security Bug Bar) [Security Process]
+<<<<<<< HEAD
 <font size="-1">_Carlo Valentin - Dec. 2018_</font>
+=======
+<font size="-1">_Author: Carlo Valentin - Dec. 2018_</font>
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 # Overview
 When vulnerabilities are identified by Application Security, the risk of the vulnerability needs to be effectively communicated to teams so that they can be fixed in a timely manner. As such, a standard set of definitions is needed for how Application Security classifies these vulnerabilities. These definitions ensure that development teams can quickly and easily understand the potential risk a vulnerability poses to their application or service. This gives a unified understanding of how to prioritize fixing known vulnerabilities.

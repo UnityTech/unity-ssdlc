@@ -51,7 +51,11 @@ The following best practices is largely relevant to ASP.Net and .Net Embedded br
   - Unicode escapes (%nnn).
   - Overlong UTF-8 escapes (%nn%nn).
   - Double escapes (%nn becomes %mmnn, where %mm is the escape for '%').
+<<<<<<< HEAD
 - Be wary of user names that might have more than one canonical format. For example, you can often use either the MYDOMAIN\username form or the username@mydomain.example.com form.
+=======
+- Be wary of user names that might have more than one canonical format. For example, you can often use either the `MYDOMAIN\username` form or the `username@mydomain.example.com` form.
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
   - (From https://github.com/dotnet/docs/blob/master/docs/standard/security/security-and-user-input.md)
 
  ---
@@ -60,6 +64,10 @@ The following best practices is largely relevant to ASP.Net and .Net Embedded br
 - https://github.com/dotnet/docs/blob/master/docs/standard/security/secure-coding-guidelines.md
 - https://docs.microsoft.com/en-us/dotnet/framework/misc/code-access-security
 - https://docs.microsoft.com/en-us/dotnet/framework/misc/security-transparent-code
+<<<<<<< HEAD
 - https://support.microsoft.- com/en-us/help/2698981/asp-net-partial-trust-does-not-guarantee-application-isolation
+=======
+- https://support.microsoft.com/en-us/help/2698981/asp-net-partial-trust-does-not-guarantee-application-isolation
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 - Attacking .Net Serialization: https://speakerdeck.com/pwntester/attacking-net-serialization?slide=8
 - .Net Remoting Security Bulletin: - https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2012/ms12-035

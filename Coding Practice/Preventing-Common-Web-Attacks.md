@@ -23,9 +23,17 @@ Clickjacking, also known as a "UI redress attack", occurs when an attacker uses 
 With this attack an attacker can trick the user into performing sensitive actions on a page that only the user has access to.
 ###### Example of Issue
 
+<<<<<<< HEAD
 Say that we have a “Pay out” button on our internal Ads Payout tool and the application does not implement any protection against Clickjacking. An attacker that knows the internal URL for the tool can now include a hidden iframe on his site `www.cute-and-funny-puppies.net`:
 
 <iframe src=”https://ads-awesome-payout-tool.unity3d.com” style=”opacity:100”></iframe>
+=======
+Say that we have a “Pay out” button on an internal advertising payout tool and the application does not implement any protection against Clickjacking. An attacker that knows the internal URL for the tool can now include a hidden iframe on his site `www.cute-and-funny-puppies.net`:
+
+```html
+<iframe src=”https://ads-awesome-payout-tool.unity3d.com” style=”opacity:100”></iframe>
+```
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 When an admin that gets bored of approving payouts visits the attacker’s site to view some funny dog pictures, he simultaneously gets tricked into approving a payout for an attacker by clicking an element on the site that really clicks the payout button in the hidden iframe.
 ###### How to Fix?
@@ -101,9 +109,14 @@ The first and best way to fix this is to use a front-end framework that output e
 
 The following front-end frameworks are good choices that will make it harder to introduce XSS vulnerabilities as they were designed with this in mind:
 
+<<<<<<< HEAD
     https://angular.io/guide/security#xss
 
     https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks
+=======
+- https://angular.io/guide/security#xss
+- https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 There are more frameworks that have good default XSS prevention, but these two that are in use already at Unity and and they are supported and used by big companies such as Google and Facebook
 
@@ -121,11 +134,17 @@ An example policy that only allows script files from the domain the application 
 ###### Security Level
 
 XSS vulnerabilities is very common and constitute a medium to high risk depending on context and application. It’s a vulnerability class that requires a lot of resources from the application security team to deal with, unless the application is well designed and we would very much like to extinguish this vulnerability class in Unity applications.
+<<<<<<< HEAD
 References
 
     https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
 
     https://csp.withgoogle.com/
+=======
+###### References
+- https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
+- https://csp.withgoogle.com/
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 ---
 ### Preventing SQL Injection
@@ -145,7 +164,13 @@ We’ve found examples of SQL injection in both the old Asset Store and in Multi
 
 All SQL queries should be parameterized queries, the exact syntax varies based on technologystack used, but usually looks more or less like this:
 
+<<<<<<< HEAD
         E.g. SELECT * FROM users WHERE username = ‘?’, username
+=======
+```sql
+SELECT * FROM users WHERE username = ‘?’, username
+```
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 Sanitize all input, but especially input that you intend to use in a SQL query.
 Limit the privileges of your database user. You should never run application SQL queries as the database admin or a root / admin user.
@@ -163,12 +188,21 @@ Limit the privileges of your database user to the minimum.
  
 ###### Security Level
 
+<<<<<<< HEAD
 The severity of a SQL injection vulnerability ranges from high to critical depending on the application and context. For Unity, a SQL injection in Genesis would be an example of a critical vulnerability because it could lead to compromise of all user data.
 References
 
 https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet
 
 https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html (Example noSQL attacks)
+=======
+The severity of a SQL injection vulnerability ranges from high to critical depending on the application and context. For example, a SQL injection in your auth provider would be a critical vulnerability because it could lead to compromise of all user data and potentially bypass of access controls.
+###### References
+
+- https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet
+
+- https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html (Example noSQL attacks)
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 --- 
 ### Preventing Cross-Site Request Forgery
@@ -192,7 +226,11 @@ If a logged in user visited this website it would create a file on the Online De
 There are several strategies to fixing this problem, and it depends a bit on the application’s architecture. Here are the main strategies that are most commonly used and accepted as a standard way of solving this problem:
 ###### _Authentication via HTTP header_
 
+<<<<<<< HEAD
 The Genesis API uses the “Authentication: Bearer xyzæøå” header for authentication. This header isn’t sent automatically and must be added using Javascript. Requests that require an authentication header to succeed are not vulnerable to CSRF attacks.
+=======
+Some auth APIs use the `“Authentication: Bearer <token goes here>”`  header for authentication. Requests that require an authentication header to succeed are not vulnerable to CSRF attacks.
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ###### _CSRF Tokens_
 
 This is the most common and accepted protection mechanism. It works by requiring every form submission and request that perform an action to include a random CSRF token in the submitted data. Since this token is set and stored by the server, and tied to a user’s session, an attacker won’t be able to access it or guess it. This prevents CSRF attacks from succeeding as the server should reject any request that don’t have a valid token.
@@ -200,11 +238,16 @@ This is the most common and accepted protection mechanism. It works by requiring
 The first thing to make sure is that your application uses the HTTP GET and POST verbs appropriately, see http://guides.rubyonrails.org/security.html#csrf-countermeasures
 
 Next you should look at your web application framework to see if they have support for CSRF tokens. Most frameworks, like Ruby on Rails as mentioned above, will either have built-in support for easily adding CSRF tokens or libraries that help implement it. Here are two popular options for NodeJS and Golang:
+<<<<<<< HEAD
 
 
     https://github.com/expressjs/csurf
 
     https://github.com/utrack/gin-csrf
+=======
+-  https://github.com/expressjs/csurf
+- https://github.com/utrack/gin-csrf
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 ###### _Checking Origin / Referer headers_
 
@@ -221,19 +264,30 @@ Strict mode prevents the browser from sending the cookies cross-origin for any r
 
 Lax mode prevents this situation and allows GET requests to send along the cookies. Requests using any other HTTP verbs won’t send along the cookies. If the application uses HTTP verbs appropriately this would normally be enough to prevent CSRF attacks because the application shouldn’t use a GET request to perform any action in the application.
 
+<<<<<<< HEAD
     Set-Cookie: CookieName=CookieValue; SameSite=Lax;
 
     Set-Cookie: CookieName=CookieValue; SameSite=Strict;
+=======
+- Set Lax mode: `Set-Cookie: CookieName=CookieValue; SameSite=Lax;`
+- Set Strict mode: `Set-Cookie: CookieName=CookieValue; SameSite=Strict;`
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
 Since this is a very new browser security feature, not all browsers support it yet and not all frameworks have APIs for setting cookies with this flag. Consider implementing it though, as it is simple, unobtrusive and effective way of preventing CSRF attacks and browser support is likely to increase in the future.
 Security Level
 
 The example above shows how serious CSRF vulnerabilities can be. The impact of a CSRF vulnerability can range from low to critical depending on the application. CSRF attacks are usually targeted and need to be tailored to a specific application, but there have also been CSRF vulnerabilities in commonly used libraries and frameworks that can be used by an attacker to target a multitude of sites at the same time.
+<<<<<<< HEAD
 References
 
     https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet
 
     https://www.netsparker.com/blog/web-security/same-site-cookie-attribute-prevent-cross-site-request-forgery/
+=======
+###### References
+- https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet
+- https://www.netsparker.com/blog/web-security/same-site-cookie-attribute-prevent-cross-site-request-forgery/
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 
  ---
 ### Credential Leaks

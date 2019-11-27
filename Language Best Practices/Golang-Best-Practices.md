@@ -9,10 +9,13 @@ This is a set of security guidelines for the Golang programming language. Each e
 Golang is a strongly typed language that has taken steps to prevent security issues found in other languages. For example, there is no pointer arithmetic. Garbage collection is automatic. Another example, the standard crypto package for AES does not provide Cipher Block Chaining (CBC) as an option.
 
 
+<<<<<<< HEAD
 ##### Security Considerations
 
 The net/http multiplexer ServeMux takes care of sanitizing the URL request path, redirecting any request containing “.” or “..” elements or repeated slashes to an equivalent, cleaner URL.
 
+=======
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 ##### Recommended Packages
 
 
@@ -70,6 +73,7 @@ _Example of Issue_:
 
 The following will declare the `<b>World</b>` string as HTML, printing it as-is into the HTML:
 
+<<<<<<< HEAD
      tmpl.Execute(out, template.HTML(`<b>World</b>`))
 
  
@@ -79,6 +83,19 @@ The EscapeString() function in the native html package accepts a string and retu
 
 The html/template package provides several functions for escaping strings:
 
+=======
+```golang
+tmpl.Execute(out, template.HTML(`<b>World</b>`))
+```
+ 
+###### How to Fix?
+
+The EscapeString() function in the native html package accepts a string and returns the same string with the special characters escaped. (i.e. `<` becomes `&lt;`). The html/template package has a stripTags() function, but it's unexported.
+
+The html/template package provides several functions for escaping strings:
+
+```golang
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
     HTMLEscape()
     HTMLEscapeString()
     HTMLEscaper()
@@ -86,7 +103,11 @@ The html/template package provides several functions for escaping strings:
     JSEscapeString()
     JSEscaper()
     URLQueryEscaper
+<<<<<<< HEAD
 
+=======
+```
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
 Avoid using template Typed Strings on user input.
 ###### Risk Rating
 
@@ -130,7 +151,11 @@ The crypto/rand package should be used instead of the math/rand package. This pa
 _Example:_
 
 This example reads 10 cryptographically secure pseudorandom numbers from rand.Reader and writes them to a byte slice:
+<<<<<<< HEAD
 
+=======
+```golang
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
     package main
 
     import (
@@ -151,7 +176,11 @@ This example reads 10 cryptographically secure pseudorandom numbers from rand.Re
     // The slice should now contain random bytes instead of only zeroes.
     fmt.Println(bytes.Equal(b, make([]byte, c)))
     }
+<<<<<<< HEAD
 
+=======
+```
+>>>>>>> 2910d0b35380405a483e2fd4eb9636ac62a937e1
  
 ###### Risk Rating
 
