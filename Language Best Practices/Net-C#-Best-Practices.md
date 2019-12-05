@@ -20,7 +20,7 @@ The following best practices are in regards to loading code or resources from an
 
   - Solution: Only load code and resources that have been signed by a trusted party.
 - Do not use .NET Remoting or binary formatters (for object serialization/deserialization)
-  - Problem: Hints that serialization vulnerabilities in the .Net framework have existed since 20120 (MS12-035 via James Forshaw), later revelations found major vulnerabilities within serialization, beyond what was published in that article.
+  - Problem: Hints that serialization vulnerabilities in the .Net framework have existed since 2012 (MS12-035 via James Forshaw), later revelations found major vulnerabilities within serialization, beyond what was published in that article.
   - Solution: Use DataContractSerialiazer as part of serializing objects.
 - Do not use Distributed Component Object Model (DCOM).
   - Problem: Again, thanks to James Forshaw, it was determined that DCOM was generally unsafe, and has issues with safe (or unsafe?) object serialization.
