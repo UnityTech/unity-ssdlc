@@ -41,7 +41,7 @@ Also, be sure to keep an eye out for on-site trainings, which will be announced 
 - [Golang](./Language%20Best%20Practices/Golang-Best-Practices.md)
 - [Node.js](./Language%20Best%20Practices/Nodejs-Best-Practices.md)
 - [Ruby](./Language%20Best%20Practices/Ruby-Best-Practices.md)
-- [C#](./Language%20Best%20Practices/Net-C#-Best-Practices.md)
+- [C#](./Language%20Best%20Practices/Net-CSharp-Best-Practices.md)
 
 #### _Security Process_
 - [Design Review](./Security%20Process/Design-Review.md)
