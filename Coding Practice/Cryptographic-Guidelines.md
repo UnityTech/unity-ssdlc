@@ -1,5 +1,5 @@
 # Cryptographic Guidelines [Coding Practice]
-<font size="-1">Authors: *Brandon Caldwell Jan 2019, Jose Perez - Mar. 2020*</font>
+<font size="-1">*Brandon Caldwell Jan 2019*</font>
 
 ## Guidelines Overview
 
@@ -65,4 +65,8 @@ Accepted TLS Cipher suites:
 
 ### References
 - https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r1.pdf
-- https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf 
+- https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf
+
+### Contributors
+
+Jose Perez - Mar. 2020
