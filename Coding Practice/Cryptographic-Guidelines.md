@@ -14,20 +14,20 @@ Cryptographic requirements at Unity are heavily influenced by NIST's *Cryptograp
 ##### TLS - Cipher Suites
 
 _Minimum TLS version = TLS1.2._
-All cipher suites below should be compatible with version >= TLS 1.2.  
-SSL 3.0 and below are not allowed.
+
+All cipher suites below should be compatible with version >= TLS 1.2 . SSL 3.0 and below are not allowed. 
+
 Accepted TLS Cipher suites:
-- TLS_RSA_WITH_AES_128_CBC_SHA
-- TLS_RSA_WITH_AES_256_CBC_SHA
-- TLS_RSA_WITH_AES_128_GCM_SHA256
-- TLS_RSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_128_CCM
+- TLS_ECDHE_ECDSA_WITH_AES_256_CCM
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
-- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_AES_128_GCM_SHA256
+- TLS_AES_256_GCM_SHA384
+- TLS_AES_128_CCM_SHA256
 
 ##### Hash Algorithms
 
@@ -52,9 +52,14 @@ Accepted TLS Cipher suites:
 - **Win32/64**: RtlGenRandom (new implementations should use BCryptGenRandom or CryptGenRandom) * and_s * SystemPrng (for kernel mode)
 - **.NET** RNGCryptoServiceProvider or RNGCng
 - **Windows Store Apps**: Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom or GenerateRandomNumber
-- **Apple OS X** _(10.7+)/iOS(2.0+)_: int SecRandomCopyBytes (SecRandomRef random, size_t count, int8_t *bytes )
+- **Apple OS X** _(10.7+)/iOS(2.0+)_: int SecRandomCopyBytes (SecRandomRef random, size_t count, int8_t *bytes)
 - **Apple OS X** _(<10.7)_: Use /dev/random to retrieve random numbers
 - **Java** _(including Google Android Java code)_- java.security.SecureRandom class. Note that for Android 4.3 (Jelly Bean), developers must follow the Android recommended workaround and pdate their applications to explicitly initialize the PRNG with entropy from /dev/urandom or dev/random
 
 ### References
 - https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r1.pdf
+- https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf
+
+### Contributors
+
+Jose Perez - Mar. 2020
