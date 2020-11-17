@@ -26,7 +26,7 @@ Our SSDLC is currently organized under the following topics:
 
 Also, be sure to keep an eye out for on-site trainings, which will be announced (and archived) here -> [Developer Security Trainings](./Trainings/readme.md)
 
-## Shortcut List of Articles 
+## Shortcut List of Articles
 #### _Coding Practice_
 - [API Best Practices](./Coding%20Practice/API-Best-Practices.md)
 - [Authorization & Authentication Guidelines](./Coding%20Practice/AuthZ-AuthN-Guidelines.md)
@@ -51,4 +51,4 @@ Also, be sure to keep an eye out for on-site trainings, which will be announced 
 - [Bug Bar](./Security%20Process/Bug-Bar.md)
 
 #### _Tools & Automation_
-- [Tools & Automation](./Tools%20and%20Automation/readme.md)
+- [Tools & Automation](./Tools%20and%20Automation/README.md)
