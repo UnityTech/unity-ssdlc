@@ -4,7 +4,7 @@
 ## Overview
 
 
-This is a set of security guidelines for the Golang programming language. Each element in this document will be Ruby-specific. General web application and API guidelines will be covered here. This guideline is intended to be a living security reference for development teams and quality assurance as part of the Application Security Team’s Secure Software Development Lifecycle (SSDLC). As such, it will be continually added to and updated as the Application Security team is made aware of new security considerations or gaps in the current guidelines.
+This is a set of security guidelines for the Golang programming language. Each element in this document will be Golang-specific. General web application and API guidelines will be covered here. This guideline is intended to be a living security reference for development teams and quality assurance as part of the Application Security Team’s Secure Software Development Lifecycle (SSDLC). As such, it will be continually added to and updated as the Application Security team is made aware of new security considerations or gaps in the current guidelines.
 
 Golang is a strongly typed language that has taken steps to prevent security issues found in other languages. For example, there is no pointer arithmetic. Garbage collection is automatic. Another example, the standard crypto package for AES does not provide Cipher Block Chaining (CBC) as an option.
 
