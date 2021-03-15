@@ -41,7 +41,7 @@ To learn how to contribute, take a look at our [Contributing.md](./CONTRIBUTING.
 ## License
 License found in: [LICENSE.md](./LICENSE.md)
 
-Copyright © 2019 Unity Technologies
+Copyright © 2021 Unity Technologies
 
 ## Disclaimer
 
