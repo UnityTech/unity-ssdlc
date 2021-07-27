@@ -44,7 +44,7 @@ The rating definitions are as follows:
 
 - Low - A vulnerability that has minor impact or can only be exploited in a chain of other vulnerabilities.
 
-For more information on determining the Risk Rating/Severity here at Unity, please see our [Unity Security Bug Bar](./Unity-Bug-Bar.md).
+For more information on determining the Risk Rating/Severity here at Unity, please see our [Unity Security Bug Bar](./Bug-Bar.md).
 
 ### Impact
 Impact classifies the reach and effect that occurs when the vulnerability is successfully exploited. This rating should take into account the loss of confidentiality, integrity, and availability of the targeted system. Reputational damage also plays a factor when rating impact.
