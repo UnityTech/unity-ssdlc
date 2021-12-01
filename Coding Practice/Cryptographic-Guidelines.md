@@ -6,6 +6,13 @@
 
 This document provides guidelines for how utilize encryption to protect data in transit and at rest. Cryptographic requirements at [COMPANY_NAME] are heavily influenced by NIST's Cryptographic Standards and Guidelines (CSRC) documentation.
 
+- [Store the Cryptographic Hash of a Password](#store-the-cryptographic-hash-of-a-password)
+- [Encrypt Sensitive Data At Rest](#encrypt-sensitive-data-at-rest)
+- [Encrypt Data In Transit](#encrypt-data-in-transit)
+- [Facilitate and Exercise Key Rotation](#facilitate-and-exercise-key-rotation)
+- [Use Secure Random Number Generators](#use-secure-random-number-generators)
+- [Store Private and Symmetric Keys in a Secure Location](#store-private-and-symmetric-keys-in-a-secure-location)
+
 ## Recommendations
 
 ### Store the Cryptographic Hash of a Password
@@ -119,9 +126,7 @@ In order to support periodic and on-demand (e.g., security incident) key rotatio
 
 When rotating keys it is often necessary for previous keys to stay around for a time to decrypt past data. A previous key should never be used to encrypt data once it is no longer the primary key. It should only be used to decrypt the data it was used to encrypt. When the data is ready to be stored again it should then be encrypted with the current key and stored.
 
-### Secure Random Number Generation
-
-
+### Use Secure Random Number Generators
 
 #### Recommended Cryptographically Secure Pseudo-Random Number Generators (CSPRNG)
 
