@@ -17,7 +17,7 @@ This document provides guidelines for how utilize encryption to protect data in 
 
 ### Store the Cryptographic Hash of a Password
 
-User passwords should be stored as cryptographic hashes. Cleartext or encrypted password storage are not permitted. For more information on the reasons behind this, check out [this article](https://auth0.com/blog/hashing-passwords-one-way-road-to-security/) by Auth0. Most services at Unity should never have to worry about storing a password as for 99% of the cases this is what Genesis, Okta, and GCP OAuth are for. In the rare case a password storage mechanism is needed, **use an algorithm like BCrypt, PBKDF2, or Argon2**; these should be used with a decent work-factor. Hashed passwords should be salted with at least a 32-bit random salt. Remember that hashing algorithms are intentionally slow by design. The slower they are, the longer they take to crack.
+User passwords should be stored as cryptographic hashes. Cleartext or encrypted password storage are not permitted. For more information on the reasons behind this, check out [this article](https://auth0.com/blog/hashing-passwords-one-way-road-to-security/) by Auth0. The Security Team recomends **using an algorithm like BCrypt, PBKDF2, or Argon2 **; these should be used with a decent work-factor. Hashed passwords should be salted with at least a 32-bit random salt. Remember that hashing algorithms are intentionally slow by design. The slower they are, the longer they take to crack.
 
 ##### Hash Algorithms for other user cases:
 
@@ -49,7 +49,7 @@ Sensitive data should be encrypted when stored and then decrypted when accessed.
 
 Maintained, trustworthy implementations of industry approved cryptographic algorithms, ciphers, and modes should be used to accomplish this. Writing your own cryptography is strongly discouraged.
 
-**The Security Team recommends using AES-256 GCM as the algorithm and key-size for symmetric encryption**. Keep in mind that encryption standards are constantly changing, so it is important to keep your encryption and decryption functionality customizable and upgradable. If you are unsure if your data needs to be encrypted, consult with the Unity Governance and Compliance team or the Unity Legal team for help making that determination.
+**The Security Team recommends using AES-256 GCM as the algorithm and key-size for symmetric encryption**. Keep in mind that encryption standards are constantly changing, so it is important to keep your encryption and decryption functionality customizable and upgradable. If you are unsure if your data needs to be encrypted, consult with the [COMPANY_NAME] Governance and Compliance team or the [COMPANY_NAME] Legal team for help making that determination.
 
 #### Authentication
 
