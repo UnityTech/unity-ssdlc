@@ -45,17 +45,15 @@ APIPA Address Range:
 
 - 169.254.0.1 - 169.254.255.254
 
-**Golang Example**
-
 <details>
-    <summary>Golang Example</summary>
-
-    ```go
-    func validateIPs(ips []net.IP) (bool, error) {
+  <summary>Golang Example</summary>
+  
+  ```go
+func validateIPs(ips []net.IP) (bool, error) {
     if len(ips) == 0 {
         return false, errors.New("IP not found")
     }
-    
+
     for _, ip := range ips {
         if ip.To16() == nil && ip.To4() == nil {
         log.Errorf("IP: %v is not valid", ip)
@@ -78,16 +76,16 @@ APIPA Address Range:
         return false, errors.New("IP address is a link-local unicast address")
         }
     }
-    
+
     return true, nil
     }
-    ```
-
+  ```
 </details>
 
-**Gitlab's Ruby Code Example**
-
-```ruby
+<details>
+  <summary>Gitlab's Ruby Example</summary>
+  
+  ```ruby
 # Source: https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb#L214-L240
 def validate_localhost(addrs_info)
     local_ips = ["::", "0.0.0.0"]
@@ -116,7 +114,8 @@ def validate_link_local(addrs_info)
 
     raise BlockedUrlError, "Requests to the link local network are not allowed"
 end
-```
+  ```
+</details>
 
 ### Step 2. Prevent secondary name resolution
 
@@ -142,9 +141,10 @@ to the following URL:
 
 Simplified code example of how Gitlab validates a submitted URI and transforms it. The `protected_uri_with_hostname` returned is used by an HTTP client.
 
-**Gitlab's Ruby Code Example**
-
-```ruby
+<details>
+  <summary>Gitlab's Ruby Example</summary>
+  
+  ```ruby
 # Source: https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb#L22
 require 'ipaddress'
 
@@ -174,7 +174,10 @@ rescue ArgumentError => error
     raise unless error.message.include?('hostname too long')
     raise BlockedUrlError, "Host is too long (maximum is 1024 characters)"
 end
-```
+  ```
+</details>
+
+
 
 This is effective, but you can run into issues if the destination web server is using virtual hosts. Without a domain to parse, the request will fail.
 
@@ -182,9 +185,10 @@ This is effective, but you can run into issues if the destination web server is 
 
 The second way to DNS Rebinding Attacks is to override the destination IP address in transport configuration of the HTTP Library. Changing it to the validated IP address from Step 1 will ensure the request goes to the validated destination.
 
-**Golang Code Example**
-
-```go
+<details>
+  <summary>Golang Example</summary>
+  
+  ```go
 func sendGetRequest(webIP, host, scheme, path) (string, error) {
     dialer := &net.Dialer{
         Timeout:   10 * time.Second,
@@ -209,15 +213,187 @@ func sendGetRequest(webIP, host, scheme, path) (string, error) {
         return "", fmt.Errorf("error when doing a GET request to publisher webURL [%s]: %v", webURL, err)
     }
 }
-```
+  ```
+</details>
 
-**C# .NET Example**
-
-```c#
+<details>
+  <summary>C# .NET Example</summary>
+  
+  ```c#
 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://1.2.3.4");
 request.Host = "www.example.com";
 var response = request.GetResponse();
-```
+  ```
+</details>
+
+## Full Code Examples
+
+<details>
+  <summary>Golang Example</summary>
+  
+  ```go
+func executeWebhook(webUrl string) {
+    u, err := url.Parse(webUrl)
+    if err != nil {
+        log.Errorf("error at parse url %v, err: %v", webUrl, err)
+    } else {
+        host := u.Hostname()
+        ip, err := getIPAdress(host)
+        if err == nil {
+          res = h.sendGetRequest(ip.String(), host, u.Scheme, u.Path, 'WebHook')
+        }
+    }
+}
+ 
+// getIPAdress returns IP address from domain name if IP address is not in a restricted range
+func getIPAdress(host string) (net.IP, error) {
+  ips, err := net.LookupIP(host)
+  if err != nil {
+    log.Errorf("Error at IP lookUP: %v, err: %v", host, err)
+    return nil, err
+  }
+ 
+  if valid, err := validateIPs(ips); !valid {
+    return nil, err
+  }
+ 
+  return findIpv4(ips)
+}
+ 
+func validateIPs(ips []net.IP) (bool, error) {
+  if len(ips) == 0 {
+    return false, errors.New("IP not found")
+  }
+ 
+  for _, ip := range ips {
+    if ip.To16() == nil && ip.To4() == nil {
+      log.Errorf("IP: %v is not valid", ip)
+      return false, errors.New("IP is not valid")
+    }
+    // IsPrivate reports whether ip is a private address, according to
+    // RFC 1918 (IPv4 addresses) and RFC 4193 (IPv6 addresses).
+    if ip.IsPrivate() {
+      log.Errorf("IP address: %v is a private address", ip)
+      return false, errors.New("IP address is a private address")
+    }
+    // checks Local Address Range of 127.0.0.0 - 127.255.255.255
+    if ip.IsLoopback() {
+      log.Errorf("IP address: %v is a local address", ip)
+      return false, errors.New("IP address is a local address")
+    }
+    // checks APIPA Address Range of 169.254.0.0 - 169.254.255.255
+    if ip.IsLinkLocalUnicast() {
+      log.Errorf("IP address: %v is a link-local unicast address", ip)
+      return false, errors.New("IP address is a link-local unicast address")
+    }
+  }
+ 
+  return true, nil
+}
+ 
+// findIpv4 returns the first Ipv4 out of ips
+func findIpv4(ips []net.IP) (net.IP, error) {
+  for _, ip := range ips {
+    if ipv4 := ip.To4(); ipv4 != nil {
+      return ipv4, nil
+    }
+  }
+  return nil, errors.New("no IPv4 found")
+}
+ 
+func sendGetRequest(webIP, host, scheme, path) (string, error) {
+    dialer := &net.Dialer{
+        Timeout:   10 * time.Second,
+        KeepAlive: 10 * time.Second,
+    }
+ 
+    // provide a custom Transport.DialContext function
+    // to force requests to use a specific destination IP address
+    http.DefaultTransport.(*http.Transport).DialContext = func(ctx context.Context, network, addr string) (net.Conn, error) {
+        port := ":80"
+        if scheme == "https" {
+            port = ":443"
+        }
+ 
+        addr = webIP + port
+        return dialer.DialContext(ctx, network, addr)
+    }
+ 
+    webURL := scheme + "://" + host + path
+    resp, err := http.Get(webURL)
+    if err != nil {
+        return "", fmt.Errorf("error when doing a GET request to publisher webURL [%s]: %v", webURL, err)
+    }
+}
+  ```
+</details>
+
+<details>
+  <summary>Gitlab's Ruby Example</summary>
+  
+  ```ruby
+# Source: https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb
+require 'ipaddress'
+ 
+# Expects Addressable::URI
+def validate_uri(uri)
+    address_info = get_address_info(uri)
+    ip_address = address_info.first&.ip_address
+    # Replace domain with resolved IP address    
+    protected_uri_with_hostname = enforce_uri_hostname(ip_address, uri)
+    # Verify that the resolved IP address is not localhost, loopback, private, or link local
+    validate_localhost(address_info)
+    validate_loopback(address_info)
+    validate_local_network(address_info)
+    validate_link_local(address_info)
+    protected_uri_with_hostname
+end  
+ 
+def validate_localhost(addrs_info)
+    local_ips = ["::", "0.0.0.0"]
+    local_ips.concat(Socket.ip_address_list.map(&:ip_address))
+ 
+    return if (local_ips & addrs_info.map(&:ip_address)).empty?
+ 
+    raise BlockedUrlError, "Requests to localhost are not allowed"
+end
+ 
+def validate_loopback(addrs_info)
+    return unless addrs_info.any? { |addr| addr.ipv4_loopback? || addr.ipv6_loopback? }
+ 
+    raise BlockedUrlError, "Requests to loopback addresses are not allowed"
+end
+ 
+def validate_local_network(addrs_info)
+    return unless addrs_info.any? { |addr| addr.ipv4_private? || addr.ipv6_sitelocal? || addr.ipv6_unique_local? }
+ 
+    raise BlockedUrlError, "Requests to the local network are not allowed"
+end
+ 
+def validate_link_local(addrs_info)
+    netmask = IPAddr.new('169.254.0.0/16')
+    return unless addrs_info.any? { |addr| addr.ipv6_linklocal? || netmask.include?(addr.ip_address) }
+ 
+    raise BlockedUrlError, "Requests to the link local network are not allowed"
+end  def enforce_uri_hostname(ip_address, uri)
+    return [uri, nil] unless ip_address && ip_address != uri.hostname
+    new_uri = uri.dup
+    new_uri.hostname = ip_address
+    [new_uri, uri.hostname]
+end
+ 
+def get_address_info(uri)
+    Addrinfo.getaddrinfo(uri.hostname, get_port(uri), nil, :STREAM).map do |addr|
+        addr.ipv6_v4mapped? ? addr.ipv6_to_ipv4 : addr
+    end
+rescue SocketError
+    raise BlockedUrlError, "Host cannot be resolved or invalid"
+rescue ArgumentError => error
+    raise unless error.message.include?('hostname too long')
+    raise BlockedUrlError, "Host is too long (maximum is 1024 characters)"
+end
+  ```
+</details>
 
 ## Resources
 
