@@ -49,40 +49,42 @@ APIPA Address Range:
 
 <details>
     <summary>Golang Example</summary>
-```go
-func validateIPs(ips []net.IP) (bool, error) {
-  if len(ips) == 0 {
-    return false, errors.New("IP not found")
-  }
 
-  for _, ip := range ips {
-    if ip.To16() == nil && ip.To4() == nil {
-      log.Errorf("IP: %v is not valid", ip)
-      return false, errors.New("IP is not valid")
+    ```go
+    func validateIPs(ips []net.IP) (bool, error) {
+    if len(ips) == 0 {
+        return false, errors.New("IP not found")
     }
-    // IsPrivate reports whether ip is a private address, according to
-    // RFC 1918 (IPv4 addresses) and RFC 4193 (IPv6 addresses).
-    if ip.IsPrivate() {
-      log.Errorf("IP address: %v is a private address", ip)
-      return false, errors.New("IP address is a private address")
+    
+    for _, ip := range ips {
+        if ip.To16() == nil && ip.To4() == nil {
+        log.Errorf("IP: %v is not valid", ip)
+        return false, errors.New("IP is not valid")
+        }
+        // IsPrivate reports whether ip is a private address, according to
+        // RFC 1918 (IPv4 addresses) and RFC 4193 (IPv6 addresses).
+        if ip.IsPrivate() {
+        log.Errorf("IP address: %v is a private address", ip)
+        return false, errors.New("IP address is a private address")
+        }
+        // checks Local Address Range of 127.0.0.0 - 127.255.255.255
+        if ip.IsLoopback() {
+        log.Errorf("IP address: %v is a local address", ip)
+        return false, errors.New("IP address is a local address")
+        }
+        // checks APIPA Address Range of 169.254.0.0 - 169.254.255.255
+        if ip.IsLinkLocalUnicast() {
+        log.Errorf("IP address: %v is a link-local unicast address", ip)
+        return false, errors.New("IP address is a link-local unicast address")
+        }
     }
-    // checks Local Address Range of 127.0.0.0 - 127.255.255.255
-    if ip.IsLoopback() {
-      log.Errorf("IP address: %v is a local address", ip)
-      return false, errors.New("IP address is a local address")
+    
+    return true, nil
     }
-    // checks APIPA Address Range of 169.254.0.0 - 169.254.255.255
-    if ip.IsLinkLocalUnicast() {
-      log.Errorf("IP address: %v is a link-local unicast address", ip)
-      return false, errors.New("IP address is a link-local unicast address")
-    }
-  }
+    ```
 
-  return true, nil
-}
-
-```
 </details>
+
 **Gitlab's Ruby Code Example**
 
 ```ruby
