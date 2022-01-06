@@ -47,12 +47,12 @@ APIPA Address Range:
 
 **Golang Example**
 
-```
+```go
 func validateIPs(ips []net.IP) (bool, error) {
   if len(ips) == 0 {
     return false, errors.New("IP not found")
   }
- 
+
   for _, ip := range ips {
     if ip.To16() == nil && ip.To4() == nil {
       log.Errorf("IP: %v is not valid", ip)
@@ -75,7 +75,7 @@ func validateIPs(ips []net.IP) (bool, error) {
       return false, errors.New("IP address is a link-local unicast address")
     }
   }
- 
+
   return true, nil
 }
 
@@ -83,33 +83,33 @@ func validateIPs(ips []net.IP) (bool, error) {
 
 **Gitlab's Ruby Code Example**
 
-```
+```ruby
 # Source: https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb#L214-L240
 def validate_localhost(addrs_info)
     local_ips = ["::", "0.0.0.0"]
     local_ips.concat(Socket.ip_address_list.map(&:ip_address))
- 
+
     return if (local_ips & addrs_info.map(&:ip_address)).empty?
- 
+
     raise BlockedUrlError, "Requests to localhost are not allowed"
 end
- 
+
 def validate_loopback(addrs_info)
     return unless addrs_info.any? { |addr| addr.ipv4_loopback? || addr.ipv6_loopback? }
- 
+
     raise BlockedUrlError, "Requests to loopback addresses are not allowed"
 end
- 
+
 def validate_local_network(addrs_info)
     return unless addrs_info.any? { |addr| addr.ipv4_private? || addr.ipv6_sitelocal? || addr.ipv6_unique_local? }
- 
+
     raise BlockedUrlError, "Requests to the local network are not allowed"
 end
- 
+
 def validate_link_local(addrs_info)
     netmask = IPAddr.new('169.254.0.0/16')
     return unless addrs_info.any? { |addr| addr.ipv6_linklocal? || netmask.include?(addr.ip_address) }
- 
+
     raise BlockedUrlError, "Requests to the link local network are not allowed"
 end
 ```
@@ -134,30 +134,30 @@ to the following URL:
 
 > https://55.26.115.78/validate
 
-Simplified code example of how Gitlab validates a submitted URI and transforms it. The `protected_uri_with_hostname` returned is used by an HTTP client. 
+Simplified code example of how Gitlab validates a submitted URI and transforms it. The `protected_uri_with_hostname` returned is used by an HTTP client.
 
 **Gitlab's Ruby Code Example**
 
-```
+```ruby
 # Source: https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb#L22
 require 'ipaddress'
- 
+
 # Expects Addressable::URI
 def validate_uri(uri)
     address_info = get_address_info(uri)
     ip_address = address_info.first&.ip_address
-    # Replace domain with resolved IP address    
+    # Replace domain with resolved IP address
     protected_uri_with_hostname = enforce_uri_hostname(ip_address, uri)
     protected_uri_with_hostname
 end
- 
+
 def enforce_uri_hostname(ip_address, uri)
     return [uri, nil] unless ip_address && ip_address != uri.hostname
     new_uri = uri.dup
     new_uri.hostname = ip_address
     [new_uri, uri.hostname]
 end
- 
+
 def get_address_info(uri)
     Addrinfo.getaddrinfo(uri.hostname, get_port(uri), nil, :STREAM).map do |addr|
         addr.ipv6_v4mapped? ? addr.ipv6_to_ipv4 : addr
@@ -170,11 +170,11 @@ rescue ArgumentError => error
 end
 ```
 
-This is effective, but you can run into issues if the destination web server is using virtual hosts. Without a domain to parse, the request will fail. 
+This is effective, but you can run into issues if the destination web server is using virtual hosts. Without a domain to parse, the request will fail.
 
 #### Option 2
 
-The second way to DNS Rebinding Attacks is to override the destination IP address in transport configuration of the HTTP Library. Changing it to the validated IP address from Step 1 will ensure the request goes to the validated destination. 
+The second way to DNS Rebinding Attacks is to override the destination IP address in transport configuration of the HTTP Library. Changing it to the validated IP address from Step 1 will ensure the request goes to the validated destination.
 
 **Golang Code Example**
 
@@ -184,7 +184,7 @@ func sendGetRequest(webIP, host, scheme, path) (string, error) {
         Timeout:   10 * time.Second,
         KeepAlive: 10 * time.Second,
     }
- 
+
     // provide a custom Transport.DialContext function
     // to force requests to use a specific destination IP address
     http.DefaultTransport.(*http.Transport).DialContext = func(ctx context.Context, network, addr string) (net.Conn, error) {
@@ -192,11 +192,11 @@ func sendGetRequest(webIP, host, scheme, path) (string, error) {
         if scheme == "https" {
             port = ":443"
         }
- 
+
         addr = webIP + port
         return dialer.DialContext(ctx, network, addr)
     }
- 
+
     webURL := scheme + "://" + host + path
     resp, err := http.Get(webURL)
     if err != nil {
@@ -216,7 +216,7 @@ var response = request.GetResponse();
 ## Resources
 
 * [PortSwigger SSRF Explanation and examples](https://portswigger.net/web-security/ssrf)
-* [OWASP SSRF Explanation](https://owasp.org/www-community/attacks/Server_Side_Request_Forgery) 
+* [OWASP SSRF Explanation](https://owasp.org/www-community/attacks/Server_Side_Request_Forgery)
 * [OWASP SSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html)
 * [SSRF + DNS Rebinding Example](https://www.youtube.com/watch?v=R5WB8h7hkrU) (Video)
 * [Gitlab SSRF + DNS Rebinding Fix](https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb#L22)
