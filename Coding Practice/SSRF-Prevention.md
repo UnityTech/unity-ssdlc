@@ -47,6 +47,8 @@ APIPA Address Range:
 
 **Golang Example**
 
+<details>
+    <summary>Golang Example</summary>
 ```go
 func validateIPs(ips []net.IP) (bool, error) {
   if len(ips) == 0 {
@@ -80,7 +82,7 @@ func validateIPs(ips []net.IP) (bool, error) {
 }
 
 ```
-
+</details>
 **Gitlab's Ruby Code Example**
 
 ```ruby
