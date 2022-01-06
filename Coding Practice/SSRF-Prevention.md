@@ -45,6 +45,8 @@ APIPA Address Range:
 
 - 169.254.0.1 - 169.254.255.254
 
+**Golang Example**
+
 ```
 func validateIPs(ips []net.IP) (bool, error) {
   if len(ips) == 0 {
@@ -78,6 +80,8 @@ func validateIPs(ips []net.IP) (bool, error) {
 }
 
 ```
+
+**Gitlab's Ruby Code Example**
 
 ```
 # Source: https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb#L214-L240
@@ -132,6 +136,8 @@ to the following URL:
 
 Simplified code example of how Gitlab validates a submitted URI and transforms it. The `protected_uri_with_hostname` returned is used by an HTTP client. 
 
+**Gitlab's Ruby Code Example**
+
 ```
 # Source: https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb#L22
 require 'ipaddress'
@@ -170,7 +176,9 @@ This is effective, but you can run into issues if the destination web server is 
 
 The second way to DNS Rebinding Attacks is to override the destination IP address in transport configuration of the HTTP Library. Changing it to the validated IP address from Step 1 will ensure the request goes to the validated destination. 
 
-```
+**Golang Code Example**
+
+```go
 func sendGetRequest(webIP, host, scheme, path) (string, error) {
     dialer := &net.Dialer{
         Timeout:   10 * time.Second,
@@ -197,9 +205,18 @@ func sendGetRequest(webIP, host, scheme, path) (string, error) {
 }
 ```
 
-```
+**C# .NET Example**
+
+```c#
 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://1.2.3.4");
 request.Host = "www.example.com";
 var response = request.GetResponse();
 ```
 
+## Resources
+
+* [PortSwigger SSRF Explanation and examples](https://portswigger.net/web-security/ssrf)
+* [OWASP SSRF Explanation](https://owasp.org/www-community/attacks/Server_Side_Request_Forgery) 
+* [OWASP SSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html)
+* [SSRF + DNS Rebinding Example](https://www.youtube.com/watch?v=R5WB8h7hkrU) (Video)
+* [Gitlab SSRF + DNS Rebinding Fix](https://gitlab.com/gitlab-org/gitlab-foss/-/blob/eabd80f72f4f7d8e19b26526aa1f44c43d78e8b3/lib/gitlab/url_blocker.rb#L22)
