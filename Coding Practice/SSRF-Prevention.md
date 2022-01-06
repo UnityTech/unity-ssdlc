@@ -120,6 +120,8 @@ If the URL submitted uses a domain name, you need to protect against DNS rebindi
 
 The video below explains how SSRF can be combined with DNS Rebinding to bypass IP checks.
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/R5WB8h7hkrU/0.jpg)](https://www.youtube.com/watch?v=R5WB8h7hkrU)
+
 There are a couple of ways prevent this.
 
 #### Option 1
